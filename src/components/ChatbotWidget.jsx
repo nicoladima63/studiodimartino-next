@@ -2,8 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, ArrowLeft } from "lucide-react";
-import emailjs from "@emailjs/browser";
 import { toast } from "react-hot-toast";
+
+const WEB3FORMS_KEY = "bbbc29e2-3fa7-439d-97e6-3a3e0c49b519";
 
 const CHAT_TREE = {
   start: {
@@ -157,18 +158,21 @@ const ChatbotWidget = () => {
 
     setIsSubmitting(true);
     try {
-      await emailjs.send(
-        "service_gi9jw93",
-        "template_xq2z826",
-        {
-          name: formData.name,
-          phone: formData.phone,
-          email: "",
-          visitType: visitType,
-          message: `[Dal chatbot] Tipo visita: ${visitType}`,
-        },
-        "AVJm6QijrJ6ZGqIMl"
-      );
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: WEB3FORMS_KEY,
+          subject: `Richiesta dal chatbot — ${formData.name}`,
+          from_name: "Chatbot Studio Di Martino",
+          "Nome": formData.name,
+          "Telefono": formData.phone,
+          "Tipo di visita": visitType || "—",
+          "Origine": "Chatbot",
+        }),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error("Web3Forms error");
 
       setChatHistory((prev) => [
         ...prev,
@@ -178,7 +182,7 @@ const ChatbotWidget = () => {
       setSubmitted(true);
       setFormData({ name: "", phone: "" });
     } catch (error) {
-      console.error("Errore chatbot EmailJS:", error);
+      console.error("Errore chatbot:", error);
       toast.error("Errore nell'invio. Riprova o chiamaci direttamente.");
     } finally {
       setIsSubmitting(false);

@@ -1,41 +1,72 @@
-import { Montserrat } from "next/font/google";
-import Script from "next/script";
+import { Geist } from "next/font/google";
 import "./globals.css";
 
-const montserrat = Montserrat({
+/** @type {import('next').Metadata} */
+
+const geistSans = Geist({
+  variable: "--font-geist-sans",
   subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
-  display: "swap",
 });
 
 export const metadata = {
-  title: "Studio Dentistico Di Martino | Dentista Agliana (PT)",
+  title: {
+    default: "Studio Dentistico Di Martino | Dentista Agliana (PT)",
+    template: "%s | Studio Dentistico Di Martino Agliana",
+  },
   description:
-    "Studio Dentistico Dr. Nicola Di Martino ad Agliana (PT). Soluzioni su misura: Odontoiatria, Implantologia, Ortodonzia ed Estetica Dentale. Prenota una visita!",
-  keywords:
-    "dentista, agliana, pistoia, prato, studio dentistico, implantologia, ortodonzia, estetica dentale, nicola di martino, igiene dentale, sbiancamento",
+    "Studio Dentistico Dr. Nicola Di Martino ad Agliana (PT). Odontoiatria, Implantologia, Ortodonzia ed Estetica Dentale. Prima visita gratuita. Prenota ora!",
+  keywords: [
+    "dentista Agliana",
+    "studio dentistico Agliana",
+    "odontoiatra Agliana",
+    "dentista Pistoia",
+    "implantologia Agliana",
+    "ortodonzia Agliana",
+    "estetica dentale Agliana",
+    "igiene dentale Agliana",
+    "Nicola Di Martino dentista",
+  ],
   authors: [{ name: "Dr. Nicola Di Martino" }],
+  creator: "Dr. Nicola Di Martino",
   metadataBase: new URL("https://studiodimartino.eu"),
-  alternates: { canonical: "/" },
+  alternates: {
+    canonical: "https://studiodimartino.eu/",
+  },
   openGraph: {
     type: "website",
-    url: "https://studiodimartino.eu/",
-    title: "Studio Dentistico Dr. Nicola Di Martino | Dentista ad Agliana (PT)",
-    description:
-      "Soluzioni su misura per il tuo sorriso: Odontoiatria, Implantologia, Ortodonzia ed Estetica Dentale. Prenota una visita ad Agliana!",
     locale: "it_IT",
-    images: [{ url: "/og-image.jpg", width: 1200, height: 630 }],
+    url: "https://studiodimartino.eu/",
+    siteName: "Studio Dentistico Dr. Nicola Di Martino",
+    title: "Studio Dentistico Di Martino | Dentista ad Agliana (PT)",
+    description:
+      "Soluzioni su misura per il tuo sorriso: Odontoiatria, Implantologia, Ortodonzia ed Estetica Dentale. Prima visita gratuita ad Agliana!",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Studio Dentistico Dr. Nicola Di Martino - Agliana (PT)",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Studio Dentistico Dr. Nicola Di Martino | Dentista ad Agliana",
+    title: "Studio Dentistico Di Martino | Dentista ad Agliana",
     description:
-      "Soluzioni su misura per il tuo sorriso: Odontoiatria, Implantologia, Ortodonzia ed Estetica Dentale.",
+      "Odontoiatria, Implantologia, Ortodonzia ed Estetica Dentale ad Agliana (PT). Prima visita gratuita!",
     images: ["/og-image.jpg"],
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+    },
   },
 };
 
-const jsonLdDentist = {
+const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Dentist",
   name: "Studio Dentistico Dr. Nicola Di Martino",
@@ -44,6 +75,8 @@ const jsonLdDentist = {
   url: "https://studiodimartino.eu",
   telephone: "+39-0574-712060",
   email: "segreteria@studiodimartino.eu",
+  image: "https://studiodimartino.eu/og-image.jpg",
+  priceRange: "$$",
   address: {
     "@type": "PostalAddress",
     streetAddress: "Via Michelangelo Buonarroti, 15",
@@ -62,6 +95,12 @@ const jsonLdDentist = {
       "@type": "OpeningHoursSpecification",
       dayOfWeek: ["Monday", "Wednesday", "Thursday"],
       opens: "09:00",
+      closes: "13:00",
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Wednesday", "Thursday"],
+      opens: "15:00",
       closes: "19:00",
     },
     {
@@ -71,57 +110,33 @@ const jsonLdDentist = {
       closes: "16:00",
     },
   ],
-  priceRange: "$$",
+  medicalSpecialty: ["Dentistry", "Orthodontics", "Prosthodontics"],
+  availableService: [
+    { "@type": "MedicalProcedure", "name": "Implantologia" },
+    { "@type": "MedicalProcedure", "name": "Ortodonzia" },
+    { "@type": "MedicalProcedure", "name": "Estetica Dentale" },
+    { "@type": "MedicalProcedure", "name": "Igiene e Prevenzione" },
+    { "@type": "MedicalProcedure", "name": "Odontoiatria Conservativa" },
+  ],
   founder: {
     "@type": "Person",
     name: "Dr. Nicola Di Martino",
     jobTitle: "Odontoiatra",
   },
-  medicalSpecialty: ["Dentistry", "Orthodontics", "Prosthodontics"],
-  availableService: [
-    { "@type": "MedicalProcedure", name: "Implantologia" },
-    { "@type": "MedicalProcedure", name: "Ortodonzia" },
-    { "@type": "MedicalProcedure", name: "Estetica Dentale" },
-    { "@type": "MedicalProcedure", name: "Igiene e Prevenzione" },
-    { "@type": "MedicalProcedure", name: "Odontoiatria Conservativa" },
-  ],
   sameAs: ["https://maps.app.goo.gl/9ssp3vWirHLUqKR2A"],
 };
 
+/** @param {{ children: React.ReactNode }} props */
 export default function RootLayout({ children }) {
   return (
-    <html lang="it">
+    <html lang="it" className={`${geistSans.variable} h-full antialiased`}>
       <head>
-        {/* JSON-LD */}
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdDentist) }}
-        />
-        {/* Iubenda cookie config - inline, deve andare prima degli script iubenda */}
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `var _iub = _iub || []; _iub.csConfiguration = {"siteId":1758615,"cookiePolicyId":43231094,"lang":"it","storage":{"useSiteId":true}};`,
-          }}
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={montserrat.className}>
-        {children}
-
-        {/* Iubenda */}
-        <Script
-          src="https://cs.iubenda.com/autoblocking/1758615.js"
-          strategy="afterInteractive"
-        />
-        <Script
-          src="//cdn.iubenda.com/cs/iubenda_cs.js"
-          strategy="afterInteractive"
-        />
-        {/* Elfsight */}
-        <Script
-          src="https://static.elfsight.com/platform/platform.js"
-          strategy="afterInteractive"
-        />
-      </body>
+      <body className="min-h-full flex flex-col">{children}</body>
     </html>
   );
 }

@@ -1,10 +1,11 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: 'export',      // genera cartella out/ statica, deployabile su qualsiasi hosting
-  trailingSlash: true,   // /privacy/ invece di /privacy - necessario per IIS Aruba
+  // Rimuovi 'output: export' per Vercel — il SSR funziona nativamente
+  // Se invece vuoi deployare su Aruba (hosting statico), rimetti: output: 'export'
   images: {
-    unoptimized: true,   // next/image senza server Node.js richiede unoptimized
+    unoptimized: true, // mantieni se non vuoi usare next/image con ottimizzazione
   },
+  // trailingSlash: true  // necessario solo per Aruba/IIS, non per Vercel
 };
 
 export default nextConfig;
