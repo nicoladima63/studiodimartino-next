@@ -71,9 +71,6 @@ export default function IgienePrevenzione() {
               <strong>Istruzione all&apos;igiene domiciliare</strong> — tecnica corretta di
               spazzolamento, uso del filo interdentale e degli scovolini
             </li>
-            <li>
-              <strong>Applicazione di fluoro</strong> per rinforzare lo smalto, se necessario
-            </li>
           </ul>
 
           <h2 className="text-2xl font-bold text-[#2F4F4F] mt-10 mb-4">

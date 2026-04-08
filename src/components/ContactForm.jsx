@@ -34,7 +34,7 @@ export default function ContactForm() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           access_key: WEB3FORMS_KEY,
-          subject: `Nuova richiesta di prenotazione — ${formData.name}`,
+          subject: `Nuova ${formData.visitType} — ${formData.name}`,
           from_name: "Sito Studio Di Martino",
           "Nome e Cognome": formData.name,
           "Telefono": formData.phone,

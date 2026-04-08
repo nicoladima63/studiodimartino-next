@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cmd /c \"del c:\\\\Users\\\\NICOLA\\\\Desktop\\\\studiodimartino-next\\\\src\\\\app\\\\favicon.ico\")"
+    ]
+  }
+}
