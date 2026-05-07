@@ -9,25 +9,20 @@ import armandiImg from "@/assets/photos/armandi.jpg";
 import jablonvskyImg from "@/assets/photos/jablonvsky.jpg";
 import calvisiImg from "@/assets/photos/calvisi.jpg";
 import dorlandiImg from "@/assets/photos/dorlandi.jpg";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Il Team | Dr. Nicola Di Martino Dentista Agliana | Studio Di Martino",
+export const metadata = createMetadata({
+  title: "Il Team | Dr. Nicola Di Martino Dentista Agliana",
   description:
     "Conosci il team dello Studio Dentistico Di Martino ad Agliana: Dr. Nicola Di Martino odontoiatra, chirurgo implantologo, ortodontista e igieniste dentali.",
-  alternates: {
-    canonical: "https://studiodimartino.eu/il-team",
-  },
-  openGraph: {
-    title: "Il Team | Dr. Nicola Di Martino Dentista Agliana | Studio Di Martino",
-    description:
-      "Conosci il team dello Studio Dentistico Di Martino ad Agliana: odontoiatra, chirurgo implantologo, ortodontista e igieniste.",
-    url: "https://studiodimartino.eu/il-team",
-    siteName: "Studio Dentistico Di Martino",
-    locale: "it_IT",
-    type: "website",
-    images: [{ url: "https://studiodimartino.eu/og-image.jpg", width: 1200, height: 630 }],
-  },
-};
+  path: "/il-team",
+  keywords: [
+    "Dr Nicola Di Martino Agliana",
+    "team studio dentistico Agliana",
+    "odontoiatra Agliana",
+    "dentista Agliana 30 anni",
+  ],
+});
 
 const team = [
   {

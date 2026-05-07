@@ -1,11 +1,13 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Privacy Policy | Studio Dentistico Di Martino",
+export const metadata = createMetadata({
+  title: "Privacy Policy",
   description: "Informativa sulla Privacy del sito Studio Dentistico Dr. Nicola Di Martino ad Agliana (PT).",
-  alternates: { canonical: "/privacy" },
-};
+  path: "/privacy",
+  keywords: ["privacy studio dentistico Agliana", "informativa privacy dentista"],
+});
 
 const PrivacyPolicy = () => {
   return (

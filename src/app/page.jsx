@@ -6,6 +6,21 @@ import ChatbotWidget from "@/components/ChatbotWidget";
 import ContactForm from "@/components/ContactForm";
 import MapSection from "@/components/MapSection";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import { createMetadata } from "@/lib/seo";
+
+export const metadata = createMetadata({
+  title: "Dentista ad Agliana da oltre 30 anni",
+  description:
+    "Studio Dentistico Di Martino ad Agliana: implantologia, ortodonzia, estetica dentale, igiene e urgenze dentali vicino a Prato, Montemurlo e Quarrata.",
+  path: "",
+  keywords: [
+    "dentista ad Agliana da oltre 30 anni",
+    "dentista Prato",
+    "dentista Montemurlo",
+    "dentista Quarrata",
+    "urgenze dentali Agliana",
+  ],
+});
 
 // Photo imports
 import dimartinoImg from "@/assets/photos/dimartino.jpg";
@@ -67,9 +82,32 @@ export default function HomePage() {
       <Header />
 
       <Hero
-        title={<>Studio Dentistico ad Agliana <br /> Dr. Nicola Di Martino</>}
-        subtitle={<>Odontoiatria, Implantologia, Ortodonzia ed Estetica Dentale.<br /> Soluzioni personalizzate, senza stress, con risultati garantiti.</>}
+        title={
+          <>
+            Dentista ad Agliana <br />
+            Studio Dentistico Dr. Nicola Di Martino
+          </>
+        }
+        subtitle={
+          <>
+            Implantologia, estetica dentale, ortodonzia e cure dentali ad Agliana.
+            Studio dentistico attivo da oltre 30 anni vicino a Prato, Montemurlo e Quarrata.
+          </>
+        }
       />
+
+      <section className="py-10 bg-white">
+        <div className="max-w-5xl mx-auto px-4">
+          <h1 className="text-4xl font-bold text-[#2F4F4F] mb-6">
+            Dentista ad Agliana vicino Prato, Montemurlo e Quarrata
+          </h1>
+
+          <p className="text-gray-600 text-lg">
+            Lo Studio Dentistico Di Martino si occupa di implantologia,
+            estetica dentale, ortodonzia e odontoiatria generale ad Agliana.
+          </p>
+        </div>
+      </section>
 
       {/* Chi Sono Section */}
       <section id="chi-sono" className="py-16 w-full bg-white">
@@ -85,22 +123,34 @@ export default function HomePage() {
               />
             </div>
             <div className="md:w-2/3">
+              <h3 className="text-2xl font-semibold mb-4 text-[#2F4F4F]">
+                Dentista ad Agliana da oltre 30 anni
+              </h3>
               <p className="text-gray-600 mb-4">
                 Mi chiamo Nicola Di Martino e sono un dentista ad Agliana, in provincia di Pistoia.
                 Il mio obiettivo è far sì che ogni paziente possa sorridere con fiducia ogni giorno.
               </p>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-[#2F4F4F]">
+                Dall&apos;odontotecnica all&apos;odontoiatria
+              </h3>
               <p className="text-gray-600 mb-4">
                 Il mio percorso è unico nel suo genere: ho iniziato come odontotecnico, progettando
                 protesi e impianti in laboratorio, per poi laurearmi in odontoiatria.
                 Questa doppia competenza mi permette di seguire ogni trattamento dalla progettazione
                 alla realizzazione finale, con una precisione che pochi studi dentistici possono offrire.
               </p>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-[#2F4F4F]">
+                Studio dentistico ad Agliana vicino Pistoia, Prato e Montemurlo
+              </h3>
               <p className="text-gray-600 mb-4">
                 Nello studio di Via Michelangelo Buonarroti 15 ad Agliana, vicino a Pistoia e Prato,
                 offro servizi di implantologia, ortodonzia invisibile, estetica dentale e odontoiatria
                 conservativa. Ogni trattamento viene personalizzato sulle esigenze del paziente,
                 utilizzando tecnologie moderne e materiali di alta qualità.
               </p>
+              <h3 className="text-2xl font-semibold mt-8 mb-4 text-[#2F4F4F]">
+                Cura del sorriso e benessere della persona
+              </h3>
               <p className="text-gray-600 mb-4">
                 Sono anche un health coach certificato: credo che la salute orale sia parte
                 integrante del benessere generale della persona. Per questo, oltre alle cure dentali,
@@ -353,6 +403,27 @@ export default function HomePage() {
           </div>
         </div>
       </section>
+      <section className="py-12 bg-red-50">
+        <div className="max-w-5xl mx-auto px-4 text-center">
+
+          <h2 className="text-3xl font-bold text-red-700 mb-4">
+            Hai dolore ai denti o un’emergenza?
+          </h2>
+
+          <p className="text-gray-700 mb-6">
+            Gestiamo urgenze dentali ad Agliana, Prato, Montemurlo e Quarrata.
+          </p>
+
+          <a
+            href="tel:+390574712060"
+            className="inline-flex items-center bg-red-600 text-white px-8 py-4 rounded-lg font-bold"
+          >
+            Chiama subito
+          </a>
+
+        </div>
+      </section>
+
 
       {/* Contatti Section */}
       <section id="contact" className="py-16 w-full bg-white">

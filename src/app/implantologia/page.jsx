@@ -1,25 +1,20 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Implantologia Agliana | Impianti Dentali | Studio Di Martino",
+export const metadata = createMetadata({
+  title: "Implantologia Agliana | Impianti Dentali",
   description:
     "Implantologia ad Agliana con il Dott. Roberto Calvisi, chirurgo implantologo. Impianti dentali singoli e arcata completa, tecnica mini-invasiva. Prenota ora.",
-  alternates: {
-    canonical: "https://studiodimartino.eu/implantologia",
-  },
-  openGraph: {
-    title: "Implantologia Agliana | Impianti Dentali | Studio Di Martino",
-    description:
-      "Implantologia ad Agliana con il Dott. Roberto Calvisi, chirurgo implantologo. Impianti dentali singoli e arcata completa, tecnica mini-invasiva.",
-    url: "https://studiodimartino.eu/implantologia",
-    siteName: "Studio Dentistico Di Martino",
-    locale: "it_IT",
-    type: "website",
-    images: [{ url: "https://studiodimartino.eu/og-image.jpg", width: 1200, height: 630 }],
-  },
-};
+  path: "/implantologia",
+  keywords: [
+    "implantologia Agliana",
+    "impianti dentali Agliana",
+    "impianti dentali Pistoia",
+    "chirurgo implantologo Agliana",
+  ],
+});
 
 export default function ImplantologiaPage() {
   return (

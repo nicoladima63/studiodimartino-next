@@ -1,25 +1,19 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Estetica Dentale Agliana | Sbiancamento & Faccette | Studio Di Martino",
+export const metadata = createMetadata({
+  title: "Estetica Dentale Agliana",
   description:
-    "Estetica dentale ad Agliana: sbiancamento professionale, faccette in ceramica, ricostruzioni estetiche. Sorriso perfetto con tecniche avanzate. Prima visita gratuita.",
-  alternates: {
-    canonical: "https://studiodimartino.eu/estetica-dentale",
-  },
-  openGraph: {
-    title: "Estetica Dentale Agliana | Sbiancamento & Faccette | Studio Di Martino",
-    description:
-      "Estetica dentale ad Agliana: sbiancamento professionale, faccette in ceramica, ricostruzioni estetiche. Sorriso perfetto con tecniche avanzate.",
-    url: "https://studiodimartino.eu/estetica-dentale",
-    siteName: "Studio Dentistico Di Martino",
-    locale: "it_IT",
-    type: "website",
-    images: [{ url: "https://studiodimartino.eu/og-image.jpg", width: 1200, height: 630 }],
-  },
-};
+    "Estetica dentale ad Agliana: sbiancamento, faccette in ceramica e ricostruzioni estetiche.",
+  path: "/estetica-dentale",
+  keywords: [
+    "sbiancamento dentale Agliana",
+    "faccette dentali Pistoia",
+    "dentista estetico Agliana",
+  ],
+});
 
 export default function EsteticaDentalePage() {
   return (

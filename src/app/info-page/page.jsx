@@ -2,11 +2,19 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import istruzioniImg from "@/assets/photos/istruzioni.jpg";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Istruzioni | Studio Dentistico Di Martino",
-  alternates: { canonical: "/info-page" },
-};
+export const metadata = createMetadata({
+  title: "Istruzioni per i Pazienti",
+  description:
+    "Informazioni e istruzioni per i pazienti dello Studio Dentistico Di Martino ad Agliana.",
+  path: "/info-page",
+  keywords: [
+    "istruzioni studio dentistico Agliana",
+    "informazioni dentista Agliana",
+    "pazienti Studio Di Martino",
+  ],
+});
 
 const InfoPage = () => {
   return (

@@ -3,25 +3,19 @@ import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import ContactForm from "@/components/ContactForm";
 import MapSection from "@/components/MapSection";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Contatti | Studio Dentistico Di Martino Agliana (PT)",
+export const metadata = createMetadata({
+  title: "Contatti Studio Dentistico Agliana",
   description:
     "Contatta lo Studio Dentistico Dr. Nicola Di Martino ad Agliana. Via Michelangelo Buonarroti, 15. Tel: 0574 712060. WhatsApp: 346 473 1192. Prima visita gratuita.",
-  alternates: {
-    canonical: "https://studiodimartino.eu/contatti",
-  },
-  openGraph: {
-    title: "Contatti | Studio Dentistico Di Martino Agliana (PT)",
-    description:
-      "Contatta lo Studio Dentistico Dr. Nicola Di Martino ad Agliana. Via Michelangelo Buonarroti, 15. Tel: 0574 712060. Prima visita gratuita.",
-    url: "https://studiodimartino.eu/contatti",
-    siteName: "Studio Dentistico Di Martino",
-    locale: "it_IT",
-    type: "website",
-    images: [{ url: "https://studiodimartino.eu/og-image.jpg", width: 1200, height: 630 }],
-  },
-};
+  path: "/contatti",
+  keywords: [
+    "contatti dentista Agliana",
+    "studio dentistico Via Michelangelo Buonarroti Agliana",
+    "prenotare dentista Agliana",
+  ],
+});
 
 export default function ContattiPage() {
   return (

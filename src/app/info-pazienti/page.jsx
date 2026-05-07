@@ -2,25 +2,20 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 import Link from "next/link";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Info Pazienti | Studio Dentistico Di Martino Agliana",
+export const metadata = createMetadata({
+  title: "Info Pazienti Studio Dentistico Agliana",
   description:
     "Informazioni utili per i pazienti dello Studio Di Martino ad Agliana: come prepararsi alla prima visita, modulo anagrafica, istruzioni post-intervento e FAQ.",
-  alternates: {
-    canonical: "https://studiodimartino.eu/info-pazienti",
-  },
-  openGraph: {
-    title: "Info Pazienti | Studio Dentistico Di Martino Agliana",
-    description:
-      "Informazioni utili per i pazienti dello Studio Di Martino ad Agliana: prima visita, modulo anagrafica, istruzioni post-intervento.",
-    url: "https://studiodimartino.eu/info-pazienti",
-    siteName: "Studio Dentistico Di Martino",
-    locale: "it_IT",
-    type: "website",
-    images: [{ url: "https://studiodimartino.eu/og-image.jpg", width: 1200, height: 630 }],
-  },
-};
+  path: "/info-pazienti",
+  keywords: [
+    "prima visita dentista Agliana",
+    "informazioni pazienti dentista Agliana",
+    "modulo anagrafica dentista",
+    "istruzioni pazienti odontoiatria",
+  ],
+});
 
 export default function InfoPazientiPage() {
   return (

@@ -1,25 +1,20 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Istruzioni Ortodontiche | Studio Dentistico Di Martino Agliana",
+export const metadata = createMetadata({
+  title: "Istruzioni Ortodontiche Agliana",
   description:
     "Istruzioni per i pazienti ortodontici dello Studio Di Martino ad Agliana: cura degli allineatori, degli apparecchi fissi, igiene orale e consigli pratici.",
-  alternates: {
-    canonical: "https://studiodimartino.eu/istruzioni-ortodontiche",
-  },
-  openGraph: {
-    title: "Istruzioni Ortodontiche | Studio Dentistico Di Martino Agliana",
-    description:
-      "Istruzioni per i pazienti ortodontici: cura degli allineatori, apparecchi fissi, igiene orale e consigli pratici.",
-    url: "https://studiodimartino.eu/istruzioni-ortodontiche",
-    siteName: "Studio Dentistico Di Martino",
-    locale: "it_IT",
-    type: "website",
-    images: [{ url: "https://studiodimartino.eu/og-image.jpg", width: 1200, height: 630 }],
-  },
-};
+  path: "/istruzioni-ortodontiche",
+  keywords: [
+    "istruzioni ortodontiche Agliana",
+    "cura allineatori trasparenti",
+    "igiene apparecchio denti",
+    "ortodonzia Agliana",
+  ],
+});
 
 export default function IstruzioniOrtodontichePage() {
   return (

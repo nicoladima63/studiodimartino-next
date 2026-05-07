@@ -141,6 +141,7 @@ export default function RootLayout({ children }) {
         {children}
         {/* Iubenda cookie */}
         <Script
+          id="iubenda-cookie-configuration"
           dangerouslySetInnerHTML={{
             __html: `var _iub = _iub || []; _iub.csConfiguration = {"siteId":1758615,"cookiePolicyId":43231094,"lang":"it","storage":{"useSiteId":true}};`,
           }}

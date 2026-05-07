@@ -1,25 +1,20 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
+import { createMetadata } from "@/lib/seo";
 
-export const metadata = {
-  title: "Igiene Dentale Agliana | Pulizia Denti Professionale | Studio Di Martino",
+export const metadata = createMetadata({
+  title: "Igiene Dentale Agliana | Pulizia Denti Professionale",
   description:
     "Igiene dentale professionale ad Agliana con le nostre igieniste. Pulizia denti, prevenzione carie e gengivite. Programmi personalizzati per adulti e bambini. Prenota ora.",
-  alternates: {
-    canonical: "https://studiodimartino.eu/igiene-prevenzione",
-  },
-  openGraph: {
-    title: "Igiene Dentale Agliana | Pulizia Denti Professionale | Studio Di Martino",
-    description:
-      "Igiene dentale professionale ad Agliana. Pulizia denti, prevenzione carie e gengivite. Programmi personalizzati per adulti e bambini.",
-    url: "https://studiodimartino.eu/igiene-prevenzione",
-    siteName: "Studio Dentistico Di Martino",
-    locale: "it_IT",
-    type: "website",
-    images: [{ url: "https://studiodimartino.eu/og-image.jpg", width: 1200, height: 630 }],
-  },
-};
+  path: "/igiene-prevenzione",
+  keywords: [
+    "igiene dentale Agliana",
+    "pulizia denti Agliana",
+    "prevenzione dentale Agliana",
+    "igienista dentale Pistoia",
+  ],
+});
 
 export default function IgienePrevenzione() {
   return (

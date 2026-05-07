@@ -1,8 +1,23 @@
 export default function sitemap() {
-  const base = "https://studiodimartino.eu";
-  const now = new Date();
+  const baseUrl = "https://studiodimartino.eu";
 
-  return [
-    { url: base, lastModified: now, changeFrequency: "monthly", priority: 1.0 },
+  const routes = [
+    "",
+    "/estetica-dentale",
+    "/implantologia",
+    "/ortodonzia",
+    "/igiene-prevenzione",
+    "/odontoiatria-generale",
+    "/contatti",
+    "/il-team",
+    "/info-pazienti",
+    "/emergenza-dentista-agliana",
   ];
+
+  return routes.map((route) => ({
+    url: `${baseUrl}${route}`,
+    lastModified: new Date(),
+    changeFrequency: "monthly",
+    priority: route === "" ? 1 : 0.8,
+  }));
 }
