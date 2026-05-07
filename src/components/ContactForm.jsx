@@ -4,8 +4,6 @@ import { useState } from "react";
 import { Phone, Mail, MapPin, Clock } from "lucide-react";
 import { Toaster, toast } from "react-hot-toast";
 
-const WEB3FORMS_KEY = "bbbc29e2-3fa7-439d-97e6-3a3e0c49b519";
-
 export default function ContactForm() {
   const [formData, setFormData] = useState({
     name: "",
@@ -29,23 +27,17 @@ export default function ContactForm() {
 
     const loadingToast = toast.loading("Invio in corso...");
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: `Nuova ${formData.visitType} — ${formData.name}`,
-          from_name: "Sito Studio Di Martino",
-          "Nome e Cognome": formData.name,
-          "Telefono": formData.phone,
-          "Email": formData.email,
-          "Tipo di visita": formData.visitType,
-          "Messaggio": formData.message || "—",
+          ...formData,
+          privacyAccepted,
         }),
       });
       const data = await res.json();
       toast.dismiss(loadingToast);
-      if (data.success) {
+      if (res.ok && data.success) {
         toast.success("Messaggio inviato con successo!", {
           style: { background: "#2F4F4F", color: "#fff" },
           duration: 3000,
@@ -156,11 +148,11 @@ export default function ContactForm() {
             required
           />
           <span className="text-sm text-gray-600">
-            Ho letto e accetto l&apos;
+            Dichiaro di aver letto l&apos;
             <a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline font-medium">
               Informativa sulla Privacy
             </a>{" "}
-            e acconsento al trattamento dei miei dati personali ai sensi del Reg. UE 2016/679 (GDPR).
+            e confermo l&apos;invio dei dati necessari per essere ricontattato.
           </span>
         </label>
         <button

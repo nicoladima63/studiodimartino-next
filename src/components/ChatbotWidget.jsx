@@ -4,8 +4,6 @@ import { useState, useRef, useEffect } from "react";
 import { MessageCircle, X, Send, ArrowLeft } from "lucide-react";
 import { toast } from "react-hot-toast";
 
-const WEB3FORMS_KEY = "bbbc29e2-3fa7-439d-97e6-3a3e0c49b519";
-
 const CHAT_TREE = {
   start: {
     id: "start",
@@ -158,21 +156,18 @@ const ChatbotWidget = () => {
 
     setIsSubmitting(true);
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/chatbot", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: `Richiesta dal chatbot — ${formData.name}`,
-          from_name: "Chatbot Studio Di Martino",
-          "Nome": formData.name,
-          "Telefono": formData.phone,
-          "Tipo di visita": visitType || "—",
-          "Origine": "Chatbot",
+          name: formData.name,
+          phone: formData.phone,
+          visitType: visitType || "—",
+          privacyAccepted,
         }),
       });
       const data = await res.json();
-      if (!data.success) throw new Error("Web3Forms error");
+      if (!res.ok || !data.success) throw new Error("Errore invio chatbot");
 
       setChatHistory((prev) => [
         ...prev,
@@ -300,7 +295,7 @@ const ChatbotWidget = () => {
                   required
                 />
                 <span className="text-xs text-gray-500">
-                  Accetto l&apos;<a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline">informativa privacy</a>
+                  Ho letto l&apos;<a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline">informativa privacy</a>
                 </span>
               </label>
               <button

@@ -19,8 +19,6 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
 
-const WEB3FORMS_KEY = "bbbc29e2-3fa7-439d-97e6-3a3e0c49b519";
-
 const FormAnagrafica = () => {
   const [formData, setFormData] = useState({
     cognome: "",
@@ -76,29 +74,14 @@ const FormAnagrafica = () => {
 
     const loadingToast = toast.loading("Invio in corso...");
     try {
-      const res = await fetch("https://api.web3forms.com/submit", {
+      const res = await fetch("/api/anagrafica", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          access_key: WEB3FORMS_KEY,
-          subject: `Nuova anagrafica — ${formData.cognome} ${formData.nome}`,
-          from_name: "Sito Studio Di Martino",
-          "Cognome e Nome": `${formData.cognome} ${formData.nome}`,
-          "Data di nascita": formData.dataNascita.split("-").reverse().join("/"),
-          "Comune di nascita": formData.comuneNascita,
-          "Codice fiscale": formData.codiceFiscale.toUpperCase(),
-          "Sesso": formData.sesso === "M" ? "Maschio" : "Femmina",
-          "Indirizzo": formData.indirizzo,
-          "CAP": formData.cap,
-          "Città": formData.citta,
-          "Provincia": formData.provincia.toUpperCase(),
-          "Cellulare": formData.cellulare,
-          "Email": formData.email,
-        }),
+        body: JSON.stringify({ ...formData, privacyAccepted: formData.privacyAccettata }),
       });
       const data = await res.json();
       toast.dismiss(loadingToast);
-      if (data.success) {
+      if (res.ok && data.success) {
         toast.success("Dati inviati con successo.", { duration: 4000 });
         setFormData({
           cognome: "",
@@ -323,11 +306,15 @@ const FormAnagrafica = () => {
                 <p className="text-sm text-gray-600 leading-relaxed">
                   I dati personali raccolti saranno trattati nel rispetto del Regolamento (UE) 2016/679
                   e utilizzati esclusivamente per finalità amministrative, cliniche e di contatto relative
-                  ai servizi richiesti. Il titolare del trattamento è lo Studio Dr. Nicola Di Martino.
+                  ai servizi richiesti. Il sito non conserva questi dati: li trasmette allo studio per
+                  l&apos;inserimento nel gestionale interno. Il titolare del trattamento è lo Studio Dr. Nicola Di Martino.
                   Potrai in ogni momento richiedere l&apos;accesso, la rettifica o la cancellazione dei tuoi
                   dati scrivendo alla{" "}
                   <a className="text-[#2F4F4F] underline" href="mailto:segreteria@studiodimartino.eu">
                     segreteria
+                  </a>. Consulta l&apos;
+                  <a className="text-[#2F4F4F] underline" href="/privacy" target="_blank" rel="noopener noreferrer">
+                    informativa privacy completa
                   </a>.
                 </p>
                 <label className="flex items-center gap-3 cursor-pointer mt-2">
@@ -340,8 +327,8 @@ const FormAnagrafica = () => {
                     className="h-4 w-4 accent-[#2F4F4F]"
                   />
                   <span className="text-sm text-gray-600">
-                    Dichiaro di aver letto e compreso l&apos;informativa privacy e acconsento al trattamento
-                    dei miei dati personali.
+                    Dichiaro di aver letto l&apos;informativa privacy e confermo l&apos;invio dei dati
+                    necessari alla predisposizione dell&apos;anagrafica paziente.
                   </span>
                 </label>
               </div>

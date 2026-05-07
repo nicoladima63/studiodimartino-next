@@ -46,6 +46,10 @@ const PrivacyPolicy = () => {
               <p>
                 Dati anagrafici (nome, cognome, data di nascita, luogo di nascita, codice fiscale, sesso),
                 dati di residenza (indirizzo, CAP, città, provincia), dati di contatto (telefono, email).
+                I dati inviati tramite il modulo anagrafica non restano memorizzati sul sito: vengono
+                trasmessi allo studio e successivamente inseriti nel gestionale interno dello studio.
+                Alcune richieste, ad esempio urgenze o trattamenti odontoiatrici, possono rivelare informazioni
+                relative alla salute.
               </p>
               <h3 className="text-lg font-semibold mt-4 mb-2">d) Dati di navigazione</h3>
               <p>
@@ -60,6 +64,7 @@ const PrivacyPolicy = () => {
               <ul className="list-disc ml-6 mt-2 space-y-1">
                 <li>Rispondere alle richieste di contatto e informazioni inviate tramite i moduli del sito</li>
                 <li>Gestire le prenotazioni di visite e consulenze</li>
+                <li>Trasmettere allo studio i dati anagrafici dei pazienti per l&apos;inserimento nel gestionale interno</li>
                 <li>Finalità amministrative e organizzative legate ai servizi dello studio</li>
                 <li>Adempiere ad obblighi di legge</li>
               </ul>
@@ -76,6 +81,7 @@ const PrivacyPolicy = () => {
                 <li><strong>Consenso dell&apos;interessato</strong> (art. 6, par. 1, lett. a del GDPR) - espresso tramite la compilazione volontaria dei moduli e la spunta dell&apos;apposita casella</li>
                 <li><strong>Esecuzione di misure precontrattuali</strong> (art. 6, par. 1, lett. b del GDPR) - per la gestione delle richieste di appuntamento</li>
                 <li><strong>Obbligo legale</strong> (art. 6, par. 1, lett. c del GDPR) - per gli adempimenti normativi applicabili</li>
+                <li><strong>Finalità di diagnosi, assistenza o terapia sanitaria</strong> (art. 9, par. 2, lett. h del GDPR) - quando i dati comunicati riguardano esigenze odontoiatriche o sanitarie</li>
               </ul>
             </div>
 
@@ -84,8 +90,14 @@ const PrivacyPolicy = () => {
               <p>Il sito utilizza i seguenti servizi di terze parti:</p>
               <ul className="list-disc ml-6 mt-2 space-y-2">
                 <li>
-                  <strong>EmailJS</strong> - per l&apos;invio dei dati inseriti nei moduli di contatto alla casella email dello studio. I dati transitano attraverso i server di EmailJS
-                  (<a href="https://www.emailjs.com/legal/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline">Privacy Policy EmailJS</a>).
+                  <strong>Vercel</strong> - piattaforma di hosting del sito e delle API server-side usate per
+                  ricevere i dati dei moduli e inoltrarli via email allo studio
+                  (<a href="https://vercel.com/legal/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline">Privacy Policy Vercel</a>).
+                </li>
+                <li>
+                  <strong>Servizio email SMTP</strong> - i dati inseriti nei moduli sono inviati alla casella
+                  email dello studio tramite il server SMTP configurato dal Titolare, senza pubblicare credenziali
+                  email nel browser del visitatore.
                 </li>
                 <li>
                   <strong>Elfsight</strong> - per la visualizzazione del widget delle recensioni Google. Potrebbe raccogliere dati anonimi di utilizzo
@@ -94,10 +106,6 @@ const PrivacyPolicy = () => {
                 <li>
                   <strong>OpenStreetMap</strong> - per la visualizzazione della mappa interattiva. Carica tile dai server di OpenStreetMap
                   (<a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline">Privacy Policy OSM</a>).
-                </li>
-                <li>
-                  <strong>Google Fonts</strong> - per il caricamento del font Montserrat. Trasferisce l&apos;indirizzo IP ai server di Google
-                  (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline">Privacy Policy Google</a>).
                 </li>
                 <li>
                   <strong>Iubenda</strong> - per la gestione del consenso cookie e la cookie policy
@@ -109,10 +117,13 @@ const PrivacyPolicy = () => {
             <div>
               <h2 className="text-xl font-bold text-[#2F4F4F] mb-3">6. Conservazione dei Dati</h2>
               <p>
-                I dati personali raccolti tramite i moduli del sito saranno conservati per il tempo
-                strettamente necessario a soddisfare le finalità per cui sono stati raccolti e
-                comunque non oltre <strong>24 mesi</strong> dalla raccolta, salvo obblighi di legge
-                che ne impongano una conservazione più lunga.
+                Il sito non salva i dati dei moduli in un database applicativo: i dati vengono inoltrati
+                alla casella email dello studio. I dati anagrafici ricevuti vengono poi inseriti nel
+                gestionale interno dello studio e conservati secondo i tempi previsti dalla normativa
+                sanitaria, fiscale e amministrativa applicabile. Le email ricevute dal sito saranno
+                conservate per il tempo strettamente necessario alla gestione della richiesta, salvo
+                obblighi di legge o esigenze sanitarie/amministrative che impongano una conservazione
+                più lunga.
               </p>
             </div>
 
