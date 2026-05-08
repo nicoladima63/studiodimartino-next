@@ -29,14 +29,14 @@ export const metadata = {
   ],
   authors: [{ name: "Dr. Nicola Di Martino" }],
   creator: "Dr. Nicola Di Martino",
-  metadataBase: new URL("https://studiodimartino.eu"),
+  metadataBase: new URL("https://www.studiodimartino.eu"),
   alternates: {
-    canonical: "https://studiodimartino.eu/",
+    canonical: "https://www.studiodimartino.eu/",
   },
   openGraph: {
     type: "website",
     locale: "it_IT",
-    url: "https://studiodimartino.eu/",
+    url: "https://www.studiodimartino.eu/",
     siteName: "Studio Dentistico Dr. Nicola Di Martino",
     title: "Studio Dentistico Di Martino | Dentista ad Agliana (PT)",
     description:
@@ -73,10 +73,10 @@ const jsonLd = {
   name: "Studio Dentistico Dr. Nicola Di Martino",
   description:
     "Studio dentistico ad Agliana specializzato in odontoiatria generale, implantologia, ortodonzia ed estetica dentale.",
-  url: "https://studiodimartino.eu",
+  url: "https://www.studiodimartino.eu",
   telephone: "+39-0574-712060",
   email: "segreteria@studiodimartino.eu",
-  image: "https://studiodimartino.eu/og-image.jpg",
+  image: "https://www.studiodimartino.eu/og-image.jpg",
   priceRange: "$$",
   address: {
     "@type": "PostalAddress",

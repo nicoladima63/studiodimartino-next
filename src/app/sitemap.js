@@ -1,5 +1,5 @@
 export default function sitemap() {
-  const baseUrl = "https://studiodimartino.eu";
+  const baseUrl = "https://www.studiodimartino.eu";
 
   const routes = [
     "",

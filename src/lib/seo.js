@@ -1,4 +1,4 @@
-const SITE_URL = "https://studiodimartino.eu";
+const SITE_URL = "https://www.studiodimartino.eu";
 
 const defaultImage = {
     url: `${SITE_URL}/og-image.jpg`,

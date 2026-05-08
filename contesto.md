@@ -99,16 +99,16 @@ export const metadata: Metadata = {
   title: 'Titolo Pagina | Studio Dentistico Di Martino Agliana',
   description: 'Descrizione ottimizzata ~155 caratteri con keyword locale.',
   alternates: {
-    canonical: 'https://studiodimartino.eu/slug-pagina',
+    canonical: 'https://www.studiodimartino.eu/slug-pagina',
   },
   openGraph: {
     title: '...',
     description: '...',
-    url: 'https://studiodimartino.eu/slug-pagina',
+    url: 'https://www.studiodimartino.eu/slug-pagina',
     siteName: 'Studio Dentistico Di Martino',
     locale: 'it_IT',
     type: 'website',
-    images: [{ url: 'https://studiodimartino.eu/og-image.jpg', width: 1200, height: 630 }],
+    images: [{ url: 'https://www.studiodimartino.eu/og-image.jpg', width: 1200, height: 630 }],
   },
 }
 ```
@@ -119,7 +119,7 @@ export const metadata: Metadata = {
   "@context": "https://schema.org",
   "@type": "Dentist",
   "name": "Studio Dentistico Dr. Nicola Di Martino",
-  "url": "https://studiodimartino.eu",
+  "url": "https://www.studiodimartino.eu",
   "telephone": "+39-0574-712060",
   "address": {
     "@type": "PostalAddress",
@@ -145,7 +145,7 @@ export const metadata: Metadata = {
 import { MetadataRoute } from 'next'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const base = 'https://studiodimartino.eu'
+  const base = 'https://www.studiodimartino.eu'
   const routes = ['', '/implantologia', '/ortodonzia', '/estetica-dentale',
     '/igiene-prevenzione', '/odontoiatria-generale', '/il-team', '/contatti',
     '/info-pazienti', '/istruzioni-ortodontiche']
