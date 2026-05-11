@@ -40,9 +40,9 @@ export default function InfoPazientiPage() {
           <div className="space-y-10">
 
             <div>
-              <h2 className="text-2xl font-bold text-[#2F4F4F] mb-4">Prima Visita Gratuita</h2>
+              <h2 className="text-2xl font-bold text-[#2F4F4F] mb-4">Prima Visita Conoscitiva</h2>
               <p className="text-gray-600 mb-3">
-                La <strong>prima consulenza è gratuita e senza impegno</strong>. Durante la prima
+                La <strong>prima consulenza è senza impegno</strong>. Durante la prima
                 visita il Dr. Di Martino effettuerà un esame completo della bocca, valuterà
                 radiografie (se già disponibili) e discuterà con te le opzioni di trattamento
                 più adatte alla tua situazione.
@@ -107,11 +107,11 @@ export default function InfoPazientiPage() {
               <h2 className="text-2xl font-bold text-[#2F4F4F] mb-4">Domande Frequenti (FAQ)</h2>
               <div className="space-y-6">
                 <div>
-                  <h3 className="font-bold text-[#2F4F4F] mb-1">La prima visita è davvero gratuita?</h3>
+                  <h3 className="font-bold text-[#2F4F4F] mb-1">Cosa include la prima visita conoscitiva?</h3>
                   <p className="text-gray-600">
-                    Sì. La prima consulenza al nostro studio è completamente gratuita e senza
-                    impegno. Al termine, riceverai un piano di trattamento dettagliato con i
-                    relativi costi, senza alcuna pressione.
+                    La prima consulenza al nostro studio è senza impegno. Il Dr. Di Martino
+                    effettua un esame completo della bocca e al termine riceverai un piano
+                    di trattamento dettagliato con i relativi costi, senza alcuna pressione.
                   </p>
                 </div>
                 <div>

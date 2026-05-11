@@ -12,6 +12,7 @@ export function createMetadata({
     path = "",
     image = defaultImage.url,
     keywords = [],
+    author = "Dr. Nicola Di Martino",
 }) {
     const fullUrl = `${SITE_URL}${path}`;
 
@@ -57,6 +58,8 @@ export function createMetadata({
             description,
             images: [image],
         },
+
+        authors: [{ name: author }],
 
         robots: {
             index: true,

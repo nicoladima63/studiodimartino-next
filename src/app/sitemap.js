@@ -11,6 +11,7 @@ export default function sitemap() {
     "/contatti",
     "/il-team",
     "/info-pazienti",
+    "/istruzioni-ortodontiche",
     "/emergenza-dentista-agliana",
   ];
 

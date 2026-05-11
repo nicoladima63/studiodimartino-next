@@ -16,9 +16,73 @@ export const metadata = createMetadata({
   ],
 });
 
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalProcedure",
+    "name": "Igiene Dentale Professionale",
+    "description": "Seduta di igiene orale professionale: rimozione di tartaro e placca, air polishing, sondaggio parodontale e istruzione all'igiene domiciliare.",
+    "relevantSpecialty": "Dentistry",
+    "performer": [
+      {
+        "@type": "Physician",
+        "name": "Dott.ssa Lara Armandi",
+        "jobTitle": "Igienista Dentale",
+        "worksFor": { "@type": "Dentist", "name": "Studio Dentistico Dr. Nicola Di Martino" }
+      },
+      {
+        "@type": "Physician",
+        "name": "Dott.ssa Anet Jablonvsky",
+        "jobTitle": "Igienista Dentale",
+        "worksFor": { "@type": "Dentist", "name": "Studio Dentistico Dr. Nicola Di Martino" }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Ogni quanto fare la pulizia denti professionale?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Per i pazienti in buona salute orale è consigliata ogni 6 mesi. Per chi ha predisposizione a gengivite, parodontite o porta apparecchio ortodontico, la frequenza consigliata è ogni 3–4 mesi." }
+      },
+      {
+        "@type": "Question",
+        "name": "La pulizia dei denti fa male?",
+        "acceptedAnswer": { "@type": "Answer", "text": "In genere no. Può esserci un lieve fastidio in caso di denti sensibili o gengive infiammate, ma non è dolorosa. Le nostre igieniste usano strumenti a ultrasuoni con tocco delicato. Se si avverte sensibilità, lo si comunica durante la seduta." }
+      },
+      {
+        "@type": "Question",
+        "name": "La pulizia professionale danneggia lo smalto?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Gli strumenti a ultrasuoni e le paste lucidanti utilizzate nelle sedute di igiene professionale non danneggiano lo smalto. Al contrario, la rimozione del tartaro protegge lo smalto dall'erosione causata dai batteri." }
+      },
+      {
+        "@type": "Question",
+        "name": "La pulizia denti è coperta dal SSN?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Il SSN copre la pulizia denti (detartrasi) solo per alcune categorie a rischio (donne in gravidanza, pazienti con patologie specifiche). Per la maggior parte dei pazienti è una prestazione privata. Contattaci per informazioni sul costo." }
+      },
+      {
+        "@type": "Question",
+        "name": "Cosa succede se non faccio la pulizia denti regolarmente?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Il tartaro che si accumula irrita le gengive e causa gengivite, che se non trattata evolve in parodontite con perdita progressiva dell'osso di supporto. La parodontite è la principale causa di perdita dei denti negli adulti ed è prevenibile con l'igiene professionale." }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.studiodimartino.eu" },
+      { "@type": "ListItem", "position": 2, "name": "Igiene e Prevenzione", "item": "https://www.studiodimartino.eu/igiene-prevenzione" }
+    ]
+  }
+];
+
 export default function IgienePrevenzione() {
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Header />
       <Hero
         title="Igiene Dentale e Prevenzione"
@@ -105,6 +169,24 @@ export default function IgienePrevenzione() {
             pazienti più ansiosi.
           </p>
 
+          <section className="mt-12">
+            <h2 className="text-2xl font-bold text-[#2F4F4F] mb-6">Domande frequenti sull&apos;igiene dentale</h2>
+            <div className="space-y-4">
+              {[
+                { q: "Ogni quanto fare la pulizia denti professionale?", a: "Per i pazienti in buona salute orale è consigliata ogni 6 mesi. Per chi ha predisposizione a gengivite, parodontite o porta apparecchio ortodontico, la frequenza consigliata è ogni 3–4 mesi." },
+                { q: "La pulizia dei denti fa male?", a: "In genere no. Può esserci un lieve fastidio in caso di denti sensibili o gengive infiammate, ma non è dolorosa. Le nostre igieniste usano strumenti a ultrasuoni con tocco delicato." },
+                { q: "La pulizia professionale danneggia lo smalto?", a: "No. Gli strumenti a ultrasuoni e le paste lucidanti non danneggiano lo smalto. Al contrario, la rimozione del tartaro protegge i denti dall'erosione causata dai batteri." },
+                { q: "La pulizia denti è coperta dal SSN?", a: "Il SSN copre la detartrasi solo per alcune categorie a rischio (donne in gravidanza, pazienti con patologie specifiche). Per la maggior parte dei pazienti è una prestazione privata." },
+                { q: "Cosa succede se non faccio la pulizia regolarmente?", a: "Il tartaro che si accumula irrita le gengive causando gengivite, che se non trattata evolve in parodontite con perdita progressiva dell'osso di supporto — principale causa di perdita dei denti negli adulti." },
+              ].map(({ q, a }, i) => (
+                <details key={i} className="border border-gray-200 rounded-lg p-4">
+                  <summary className="font-semibold text-[#2F4F4F] cursor-pointer">{q}</summary>
+                  <p className="text-gray-600 mt-2">{a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+
           <div className="mt-10 bg-gray-50 rounded-lg p-6 border border-gray-200">
             <h3 className="text-xl font-bold text-[#2F4F4F] mb-3">
               Prenota la tua seduta di igiene dentale
@@ -133,6 +215,11 @@ export default function IgienePrevenzione() {
         </div>
       </section>
 
+      <div className="max-w-4xl mx-auto px-4 pb-10">
+        <p className="text-xs text-gray-400 border-t border-gray-100 pt-4">
+          Le informazioni contenute in questa pagina hanno scopo puramente informativo e non sostituiscono il parere del medico odontoiatra. Per una valutazione personalizzata prenota una visita presso il nostro studio.
+        </p>
+      </div>
       <Footer />
     </div>
   );

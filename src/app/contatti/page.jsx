@@ -8,7 +8,7 @@ import { createMetadata } from "@/lib/seo";
 export const metadata = createMetadata({
   title: "Contatti Studio Dentistico Agliana",
   description:
-    "Contatta lo Studio Dentistico Dr. Nicola Di Martino ad Agliana. Via Michelangelo Buonarroti, 15. Tel: 0574 712060. WhatsApp: 346 473 1192. Prima visita gratuita.",
+    "Contatta lo Studio Dentistico Dr. Nicola Di Martino ad Agliana. Via Michelangelo Buonarroti, 15. Tel: 0574 712060. WhatsApp: 346 473 1192. Prima visita senza impegno.",
   path: "/contatti",
   keywords: [
     "contatti dentista Agliana",
@@ -33,7 +33,7 @@ export default function ContattiPage() {
             Prenota una Visita al nostro Studio Dentistico ad Agliana
           </h1>
           <p className="text-center text-gray-500 mb-12 text-lg">
-            Compila il modulo o contattaci direttamente. La prima visita è gratuita.
+            Compila il modulo o contattaci direttamente. La prima visita è senza impegno.
             Risponderemo entro 24 ore.
           </p>
 

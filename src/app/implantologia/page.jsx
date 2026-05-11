@@ -16,9 +16,71 @@ export const metadata = createMetadata({
   ],
 });
 
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalProcedure",
+    "name": "Implantologia Dentale",
+    "procedureType": "https://schema.org/SurgicalProcedure",
+    "description": "Inserimento di una radice artificiale in titanio nell'osso mascellare per sostituire denti mancanti, ripristinando funzione masticatoria ed estetica.",
+    "bodyLocation": "Mandibola / Mascella",
+    "preparation": "Visita di valutazione con radiografie panoramiche e CBCT tridimensionale per pianificazione digitale del posizionamento.",
+    "followup": "Controlli a 1 settimana, 1 mese, 3 mesi e annuali. Igiene professionale ogni 6 mesi.",
+    "howPerformed": "In anestesia locale. Posizionamento della fixture in titanio, osseointegrazione 2–4 mesi, applicazione abutment e corona definitiva.",
+    "recognizingAuthority": { "@type": "Organization", "name": "FNOMCEO" },
+    "relevantSpecialty": "Dentistry",
+    "performer": {
+      "@type": "Physician",
+      "name": "Dott. Roberto Calvisi",
+      "jobTitle": "Chirurgo Implantologo",
+      "worksFor": { "@type": "Dentist", "name": "Studio Dentistico Dr. Nicola Di Martino" }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "L'intervento di impianto dentale fa male?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. L'intervento viene eseguito in anestesia locale completa: durante la procedura non si avverte dolore. Nelle 24–48 ore successive è normale un fastidio moderato, gestibile con antidolorifici da banco come ibuprofene." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quanto costa un impianto dentale ad Agliana?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Il costo varia in base al numero di impianti, al tipo di protesi e alla complessità del caso. Offriamo un preventivo dettagliato dopo la visita di valutazione, senza impegno." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quanto tempo dura l'osseointegrazione?",
+        "acceptedAnswer": { "@type": "Answer", "text": "L'osseointegrazione — il processo con cui l'impianto in titanio si fonde con l'osso — richiede in media 2–4 mesi. In alcuni casi di carico immediato è possibile ridurre i tempi, ma solo se le condizioni cliniche lo consentono." }
+      },
+      {
+        "@type": "Question",
+        "name": "Posso fare l'impianto se ho poco osso?",
+        "acceptedAnswer": { "@type": "Answer", "text": "In molti casi sì. Tecniche come il rialzo del seno mascellare e la rigenerazione ossea guidata permettono di trattare anche i casi con osso insufficiente. La valutazione con CBCT determina la fattibilità." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quanto dura un impianto dentale?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Con una corretta igiene domiciliare e controlli periodici, un impianto in titanio può durare tutta la vita. La corona protesica soprastante può necessitare di sostituzione dopo 15–20 anni." }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.studiodimartino.eu" },
+      { "@type": "ListItem", "position": 2, "name": "Implantologia", "item": "https://www.studiodimartino.eu/implantologia" }
+    ]
+  }
+];
+
 export default function ImplantologiaPage() {
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Header />
       <Hero
         title="Implantologia ad Agliana"
@@ -91,7 +153,7 @@ export default function ImplantologiaPage() {
             Il costo di un impianto dentale varia in base al numero di impianti necessari,
             al tipo di protesi e alla complessità del caso clinico. Offriamo un preventivo
             dettagliato e personalizzato dopo la visita di valutazione. La prima visita
-            è gratuita e senza impegno.
+            è senza impegno.
           </p>
 
           <h2 className="text-2xl font-bold text-[#2F4F4F] mt-10 mb-4">
@@ -104,13 +166,31 @@ export default function ImplantologiaPage() {
             Dr. Di Martino per garantire un risultato protesico ottimale.
           </p>
 
+          <section className="mt-12">
+            <h2 className="text-2xl font-bold text-[#2F4F4F] mb-6">Domande frequenti sull&apos;implantologia</h2>
+            <div className="space-y-4">
+              {[
+                { q: "L'intervento di impianto dentale fa male?", a: "No. L'intervento viene eseguito in anestesia locale completa: durante la procedura non si avverte dolore. Nelle 24–48 ore successive è normale un fastidio moderato, gestibile con antidolorifici da banco come ibuprofene." },
+                { q: "Quanto costa un impianto dentale ad Agliana?", a: "Il costo varia in base al numero di impianti, al tipo di protesi e alla complessità del caso. Offriamo un preventivo dettagliato e personalizzato dopo la visita di valutazione, senza impegno." },
+                { q: "Quanto tempo dura l'osseointegrazione?", a: "L'osseointegrazione — il processo con cui l'impianto in titanio si fonde con l'osso — richiede in media 2–4 mesi. In alcuni casi selezionati è possibile il carico immediato, ma solo se le condizioni cliniche lo consentono." },
+                { q: "Posso fare l'impianto se ho poco osso?", a: "In molti casi sì. Tecniche come il rialzo del seno mascellare e la rigenerazione ossea guidata permettono di trattare anche i pazienti con osso insufficiente. La valutazione con CBCT determina la fattibilità." },
+                { q: "Quanto dura un impianto dentale?", a: "Con una corretta igiene domiciliare e controlli periodici, un impianto in titanio può durare tutta la vita. La corona protesica soprastante può necessitare di sostituzione dopo 15–20 anni." },
+              ].map(({ q, a }, i) => (
+                <details key={i} className="border border-gray-200 rounded-lg p-4">
+                  <summary className="font-semibold text-[#2F4F4F] cursor-pointer">{q}</summary>
+                  <p className="text-gray-600 mt-2">{a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+
           <div className="mt-10 bg-gray-50 rounded-lg p-6 border border-gray-200">
             <h3 className="text-xl font-bold text-[#2F4F4F] mb-3">
               Prenota una consulenza sull&apos;implantologia
             </h3>
             <p className="text-gray-600 mb-4">
               Vuoi sapere se sei un buon candidato per gli impianti dentali? Contattaci per
-              una prima visita gratuita ad Agliana. Ti risponderemo entro 24 ore.
+              una prima visita ad Agliana. Ti risponderemo entro 24 ore.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
               <a
@@ -132,6 +212,11 @@ export default function ImplantologiaPage() {
         </div>
       </section>
 
+      <div className="max-w-4xl mx-auto px-4 pb-10">
+        <p className="text-xs text-gray-400 border-t border-gray-100 pt-4">
+          Le informazioni contenute in questa pagina hanno scopo puramente informativo e non sostituiscono il parere del medico odontoiatra. Per una valutazione personalizzata prenota una visita presso il nostro studio.
+        </p>
+      </div>
       <Footer />
     </div>
   );

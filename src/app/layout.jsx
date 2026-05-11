@@ -15,7 +15,7 @@ export const metadata = {
     template: "%s | Studio Dentistico Di Martino Agliana",
   },
   description:
-    "Studio Dentistico Dr. Nicola Di Martino ad Agliana (PT). Odontoiatria, Implantologia, Ortodonzia ed Estetica Dentale. Prima visita gratuita. Prenota ora!",
+    "Studio Dentistico Dr. Nicola Di Martino ad Agliana (PT). Odontoiatria, Implantologia, Ortodonzia ed Estetica Dentale. Prima visita senza impegno. Prenota ora!",
   keywords: [
     "dentista Agliana",
     "studio dentistico Agliana",
@@ -40,7 +40,7 @@ export const metadata = {
     siteName: "Studio Dentistico Dr. Nicola Di Martino",
     title: "Studio Dentistico Di Martino | Dentista ad Agliana (PT)",
     description:
-      "Soluzioni su misura per il tuo sorriso: Odontoiatria, Implantologia, Ortodonzia ed Estetica Dentale. Prima visita gratuita ad Agliana!",
+      "Soluzioni su misura per il tuo sorriso: Odontoiatria, Implantologia, Ortodonzia ed Estetica Dentale. Prima visita senza impegno ad Agliana.",
     images: [
       {
         url: "/og-image.jpg",
@@ -54,7 +54,7 @@ export const metadata = {
     card: "summary_large_image",
     title: "Studio Dentistico Di Martino | Dentista ad Agliana",
     description:
-      "Odontoiatria, Implantologia, Ortodonzia ed Estetica Dentale ad Agliana (PT). Prima visita gratuita!",
+      "Odontoiatria, Implantologia, Ortodonzia ed Estetica Dentale ad Agliana (PT). Prima visita senza impegno.",
     images: ["/og-image.jpg"],
   },
   robots: {
@@ -65,101 +65,6 @@ export const metadata = {
       follow: true,
     },
   },
-};
-
-const jsonLdOld = {
-  "@context": "https://schema.org",
-  "@type": "Dentist",
-  name: "Studio Dentistico Dr. Nicola Di Martino",
-  description:
-    "Studio dentistico ad Agliana specializzato in odontoiatria generale, implantologia, ortodonzia ed estetica dentale.",
-  url: "https://www.studiodimartino.eu",
-  telephone: "+39-0574-712060",
-  email: "segreteria@studiodimartino.eu",
-  "@id": "https://www.studiodimartino.eu",
-  image: "https://www.studiodimartino.eu/og-image.jpg",
-  priceRange: "€€",
-  address: {
-    "@type": "PostalAddress",
-    streetAddress: "Via Michelangelo Buonarroti, 15",
-    addressLocality: "Agliana",
-    addressRegion: "PT",
-    postalCode: "51031",
-    addressCountry: "IT",
-  },
-  geo: {
-    "@type": "GeoCoordinates",
-    latitude: 43.9015278,
-    longitude: 11.0136389,
-  },
-  openingHoursSpecification: [
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Wednesday", "Thursday"],
-      opens: "09:00",
-      closes: "13:00",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Monday", "Wednesday", "Thursday"],
-      opens: "15:00",
-      closes: "19:00",
-    },
-    {
-      "@type": "OpeningHoursSpecification",
-      dayOfWeek: ["Tuesday", "Friday"],
-      opens: "09:00",
-      closes: "16:00",
-    },
-  ],
-  medicalSpecialty: ["Dentistry", "Orthodontics", "Prosthodontics"],
-  availableService: [
-    { "@type": "MedicalProcedure", "name": "Implantologia" },
-    { "@type": "MedicalProcedure", "name": "Ortodonzia" },
-    { "@type": "MedicalProcedure", "name": "Estetica Dentale" },
-    { "@type": "MedicalProcedure", "name": "Igiene e Prevenzione" },
-    { "@type": "MedicalProcedure", "name": "Odontoiatria Conservativa" },
-  ],
-  "hasOfferCatalog": {
-    "@type": "OfferCatalog",
-    "name": "Servizi Odontoiatrici",
-    "itemListElement": [
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Implantologia e Protesi"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Ortodonzia Invisibile (Invisalign)"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Igiene e Sbiancamento Dentale"
-        }
-      },
-      {
-        "@type": "Offer",
-        "itemOffered": {
-          "@type": "Service",
-          "name": "Odontoiatria Pediatrica"
-        }
-      }
-    ]
-  },
-  founder: {
-    "@type": "Person",
-    name: "Dr. Nicola Di Martino",
-    jobTitle: "Odontoiatra",
-  },
-  sameAs: ["https://maps.app.goo.gl/9ssp3vWirHLUqKR2A"],
 };
 
 const jsonLd = {
@@ -241,7 +146,12 @@ const jsonLd = {
     "name": "Dr. Nicola Di Martino",
     "jobTitle": "Odontoiatra"
   },
-  "sameAs": ["https://maps.app.goo.gl/9ssp3vWirHLUqKR2A"]
+  "sameAs": [
+    "https://maps.app.goo.gl/9ssp3vWirHLUqKR2A",
+    "https://www.instagram.com/studio_dentistico_di_martino",
+    "https://www.facebook.com/share/15td3Aa8zh/",
+    "https://www.tiktok.com/@drnicoladimartino"
+  ]
 };
 
 

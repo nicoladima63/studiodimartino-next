@@ -4,17 +4,22 @@ import Hero from "@/components/Hero";
 import istruzioniImg from "@/assets/photos/istruzioni.jpg";
 import { createMetadata } from "@/lib/seo";
 
-export const metadata = createMetadata({
-  title: "Istruzioni Ortodonzia",
-  description:
-    "Istruzioni pratiche per i pazienti ortodontici dello Studio Dentistico Di Martino ad Agliana.",
-  path: "/istruzioni-orto",
-  keywords: [
-    "istruzioni ortodonzia Agliana",
-    "pazienti ortodonzia Agliana",
-    "studio dentistico Agliana",
-  ],
-});
+export const metadata = {
+  ...createMetadata({
+    title: "Istruzioni Ortodonzia",
+    description:
+      "Istruzioni pratiche per i pazienti ortodontici dello Studio Dentistico Di Martino ad Agliana.",
+    path: "/istruzioni-orto",
+    keywords: [
+      "istruzioni ortodonzia Agliana",
+      "pazienti ortodonzia Agliana",
+      "studio dentistico Agliana",
+    ],
+  }),
+  alternates: {
+    canonical: "https://www.studiodimartino.eu/istruzioni-ortodontiche",
+  },
+};
 
 const IstruzioniOrto = () => {
   return (

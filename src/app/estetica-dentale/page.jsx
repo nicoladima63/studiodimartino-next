@@ -4,9 +4,9 @@ import Hero from "@/components/Hero";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
-  title: "Estetica Dentale Agliana",
+  title: "Estetica Dentale Agliana | Sbiancamento e Faccette",
   description:
-    "Estetica dentale ad Agliana: sbiancamento, faccette in ceramica e ricostruzioni estetiche.",
+    "Estetica dentale ad Agliana con il Dr. Di Martino, odontotecnico e odontoiatra. Sbiancamento professionale, faccette in ceramica e ricostruzioni estetiche. Prima visita senza impegno.",
   path: "/estetica-dentale",
   keywords: [
     "sbiancamento dentale Agliana",
@@ -15,9 +15,65 @@ export const metadata = createMetadata({
   ],
 });
 
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "MedicalProcedure",
+    "name": "Estetica Dentale e Sbiancamento",
+    "description": "Trattamenti estetici dentali: sbiancamento professionale, faccette in ceramica e ricostruzioni in composito per migliorare colore, forma e aspetto del sorriso.",
+    "relevantSpecialty": "Dentistry",
+    "performer": {
+      "@type": "Physician",
+      "name": "Dr. Nicola Di Martino",
+      "jobTitle": "Odontoiatra e Odontotecnico",
+      "worksFor": { "@type": "Dentist", "name": "Studio Dentistico Dr. Nicola Di Martino" }
+    }
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "Quanto dura lo sbiancamento dentale professionale?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Lo sbiancamento in studio dura 60–90 minuti con risultati immediatamente visibili. Lo sbiancamento domiciliare con mascherine richiede 7–14 giorni. I risultati durano in media 1–3 anni, a seconda delle abitudini alimentari." }
+      },
+      {
+        "@type": "Question",
+        "name": "Le faccette in ceramica danneggiano i denti?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Le faccette tradizionali richiedono una minima preparazione del dente (0,3–0,5 mm di smalto rimosso). Le faccette ultra-sottili no-prep non richiedono preparazione. La scelta dipende dalla situazione clinica e viene valutata dal Dr. Di Martino." }
+      },
+      {
+        "@type": "Question",
+        "name": "Qual è la differenza tra sbiancamento in studio e domiciliare?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Lo sbiancamento in studio usa gel a concentrazione più alta con lampada, risultati immediati in una seduta. Quello domiciliare usa gel a concentrazione minore in mascherine personalizzate, risultati graduali. Spesso si abbinano i due per effetti ottimali." }
+      },
+      {
+        "@type": "Question",
+        "name": "Quanto durano le faccette dentali in ceramica?",
+        "acceptedAnswer": { "@type": "Answer", "text": "Le faccette in ceramica di qualità durano in media 10–20 anni con una corretta igiene e senza traumatismi. La longevità dipende dal materiale, dalla tecnica di cementazione e dalle abitudini del paziente." }
+      },
+      {
+        "@type": "Question",
+        "name": "Lo sbiancamento funziona su corone o protesi?",
+        "acceptedAnswer": { "@type": "Answer", "text": "No. Lo sbiancamento agisce solo sui denti naturali, non su corone, ponti, faccette o otturazioni in composito. Se si sbiana con protesi presenti, potrebbe creare una discromatia. Valutare con il dentista prima del trattamento." }
+      }
+    ]
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://www.studiodimartino.eu" },
+      { "@type": "ListItem", "position": 2, "name": "Estetica Dentale", "item": "https://www.studiodimartino.eu/estetica-dentale" }
+    ]
+  }
+];
+
 export default function EsteticaDentalePage() {
   return (
     <div>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <Header />
       <Hero
         title="Estetica Dentale ad Agliana"
@@ -98,12 +154,30 @@ export default function EsteticaDentalePage() {
             in una singola seduta, con risultati immediatamente visibili.
           </p>
 
+          <section className="mt-12">
+            <h2 className="text-2xl font-bold text-[#2F4F4F] mb-6">Domande frequenti sull&apos;estetica dentale</h2>
+            <div className="space-y-4">
+              {[
+                { q: "Quanto dura lo sbiancamento dentale professionale?", a: "Lo sbiancamento in studio dura 60–90 minuti con risultati immediati. I risultati durano in media 1–3 anni a seconda delle abitudini (caffè, vino, fumo). Lo sbiancamento domiciliare con mascherine richiede 7–14 giorni." },
+                { q: "Le faccette in ceramica danneggiano i denti?", a: "Le faccette tradizionali richiedono una minima preparazione (0,3–0,5 mm di smalto rimosso). Le faccette ultra-sottili no-prep non richiedono preparazione. La scelta dipende dalla situazione clinica valutata dal Dr. Di Martino." },
+                { q: "Qual è la differenza tra sbiancamento in studio e domiciliare?", a: "Lo sbiancamento in studio usa gel ad alta concentrazione con lampada, risultati immediati in una seduta. Quello domiciliare usa gel a bassa concentrazione in mascherine personalizzate, risultati graduali in 7–14 giorni. Spesso si abbinano i due." },
+                { q: "Quanto durano le faccette dentali in ceramica?", a: "Le faccette in ceramica di qualità durano in media 10–20 anni con corretta igiene e senza traumatismi. Il Dr. Di Martino, grazie alla sua formazione come odontotecnico, segue personalmente ogni fase dalla progettazione alla realizzazione." },
+                { q: "Lo sbiancamento funziona su corone o protesi?", a: "No. Lo sbiancamento agisce solo sui denti naturali, non su corone, ponti o faccette. Se sono presenti protesi, sbiancando si crea una discromatia tra denti naturali e artificiali. Valutare con il dentista prima del trattamento." },
+              ].map(({ q, a }, i) => (
+                <details key={i} className="border border-gray-200 rounded-lg p-4">
+                  <summary className="font-semibold text-[#2F4F4F] cursor-pointer">{q}</summary>
+                  <p className="text-gray-600 mt-2">{a}</p>
+                </details>
+              ))}
+            </div>
+          </section>
+
           <div className="mt-10 bg-gray-50 rounded-lg p-6 border border-gray-200">
             <h3 className="text-xl font-bold text-[#2F4F4F] mb-3">
               Scopri il tuo nuovo sorriso
             </h3>
             <p className="text-gray-600 mb-4">
-              Prenota una visita estetica gratuita ad Agliana. Il Dr. Di Martino analizzerà il
+              Prenota una visita estetica ad Agliana senza impegno. Il Dr. Di Martino analizzerà il
               tuo sorriso e ti proporrà le soluzioni più adatte.
             </p>
             <div className="flex flex-col sm:flex-row gap-4">
@@ -126,6 +200,11 @@ export default function EsteticaDentalePage() {
         </div>
       </section>
 
+      <div className="max-w-4xl mx-auto px-4 pb-10">
+        <p className="text-xs text-gray-400 border-t border-gray-100 pt-4">
+          Le informazioni contenute in questa pagina hanno scopo puramente informativo e non sostituiscono il parere del medico odontoiatra. Per una valutazione personalizzata prenota una visita presso il nostro studio.
+        </p>
+      </div>
       <Footer />
     </div>
   );

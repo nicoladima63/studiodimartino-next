@@ -29,19 +29,19 @@ const team = [
     name: "Dr. Nicola Di Martino",
     role: "Odontoiatra, Health Coach",
     photo: dimartinoImg.src,
-    bio: "Fondatore dello studio, il Dr. Di Martino ha un percorso unico: prima odontotecnico, poi laureato in Odontoiatria. Questa doppia competenza gli permette di seguire ogni caso dalla pianificazione protesica alla realizzazione finale. È anche Health Coach certificato: crede nell'approccio olistico alla salute, dove la bocca è specchio del benessere generale. Prima visita gratuita e senza impegno.",
+    bio: "Fondatore dello studio, il Dr. Di Martino ha un percorso unico: prima odontotecnico, poi laureato in Odontoiatria. Questa doppia competenza gli permette di seguire ogni caso dalla pianificazione protesica alla realizzazione finale. È anche Health Coach certificato: crede che la salute dipenda da numerosi fattori e la bocca è specchio del benessere generale. Prima visita senza impegno.",
   },
   {
     name: "Dott. Roberto Calvisi",
     role: "Chirurgo Implantologo",
     photo: calvisiImg.src,
-    bio: "Specializzato in chirurgia implantare, il Dott. Calvisi esegue interventi di implantologia singola e su arcata completa con tecniche mini-invasive. La sua esperienza pluriennale garantisce risultati prevedibili e un basso tasso di complicanze.",
+    bio: "Specializzato in chirurgia implantare, il Dott. Calvisi esegue interventi di implantologia singola e su arcata completa anche con tecnica guidata flapless. La sua esperienza pluriennale garantisce risultati prevedibili e un basso tasso di complicanze.",
   },
   {
     name: "Dott. Giacomo D'Orlandi",
     role: "Ortodontista",
     photo: dorlandiImg.src,
-    bio: "Specializzato in ortodonzia fissa e mobile, il Dott. D'Orlandi tratta pazienti di tutte le età — dai bambini in fase di sviluppo agli adulti che desiderano correggere il loro sorriso. Ha una spiccata competenza nel trattamento con allineatori trasparenti.",
+    bio: "Specializzato in ortodonzia fissa e mobile, il Dott. D'Orlandi tratta pazienti di tutte le età — dai bambini in fase di sviluppo agli adulti che desiderano correggere il loro sorriso. Ha una spiccata competenza nel trattamento con allineatori trasparenti ed è Invisalign Certificato.",
   },
   {
     name: "Dott.ssa Lara Armandi",
@@ -93,9 +93,8 @@ export default function IlTeamPage() {
             {team.map((member, index) => (
               <div
                 key={index}
-                className={`flex flex-col md:flex-row items-center gap-8 ${
-                  index % 2 !== 0 ? "md:flex-row-reverse" : ""
-                }`}
+                className={`flex flex-col md:flex-row items-center gap-8 ${index % 2 !== 0 ? "md:flex-row-reverse" : ""
+                  }`}
               >
                 <div className="flex-shrink-0">
                   <div className="w-48 h-48 rounded-full overflow-hidden shadow-lg">
@@ -121,7 +120,7 @@ export default function IlTeamPage() {
               Vieni a conoscerci di persona
             </h3>
             <p className="text-gray-600 mb-6">
-              La prima consulenza è gratuita e senza impegno. Saremo felici di accoglierti
+              La prima consulenza è senza impegno. Saremo felici di accoglierti
               nel nostro studio ad Agliana.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">

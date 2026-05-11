@@ -1,4 +1,5 @@
 import { Phone, ChevronRight, Clock, Calendar, Shield, CheckCircle, Smile, Award, HandHelping } from "lucide-react";
+import Link from "next/link";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
@@ -48,21 +49,25 @@ const services = [
     title: "Odontoiatria Generale",
     description:
       "Cure dentali complete: dalla detartrasi all'igiene dentale professionale, otturazioni estetiche e devitalizzazioni. Prevenzione e trattamenti conservativi per mantenere i tuoi denti naturali il più a lungo possibile.",
+    href: "/odontoiatria-generale",
   },
   {
     title: "Implantologia",
     description:
       "Impianti dentali di ultima generazione per sostituire denti mancanti in modo sicuro e duraturo. Dalla singola corona all'arcata completa, con materiali biocompatibili e tecniche mini-invasive.",
+    href: "/implantologia",
   },
   {
     title: "Ortodonzia",
     description:
       "Trattamenti ortodontici per adulti e bambini: apparecchi tradizionali, ortodonzia invisibile e allineatori trasparenti. Correzione di malocclusioni, denti storti e problemi di morso.",
+    href: "/ortodonzia",
   },
   {
     title: "Estetica Dentale",
     description:
       "Sbiancamento dentale professionale, faccette in ceramica e ricostruzioni estetiche per un sorriso perfetto. Risultati naturali e duraturi con le tecniche più avanzate.",
+    href: "/estetica-dentale",
   },
 ];
 
@@ -292,10 +297,13 @@ export default function HomePage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow">
-                <h3 className="text-xl font-semibold mb-3 text-[#2F4F4F]">{service.title}</h3>
+              <Link key={index} href={service.href} className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow block group">
+                <h3 className="text-xl font-semibold mb-3 text-[#2F4F4F] group-hover:underline">{service.title}</h3>
                 <p className="text-gray-600">{service.description}</p>
-              </div>
+                <span className="inline-flex items-center text-[#2F4F4F] font-semibold mt-3 text-sm">
+                  Scopri di più <ChevronRight className="ml-1 h-4 w-4" />
+                </span>
+              </Link>
             ))}
           </div>
           <div className="text-center mt-10">
