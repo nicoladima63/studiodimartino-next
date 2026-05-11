@@ -1,0 +1,78 @@
+{
+    "@context": "https://schema.org",
+    "@type": "Dentist",
+    "name": "Studio Dentistico Di Martino",
+    "image": "https://studiodimartino.eu",
+    "@id": "https://studiodimartino.eu",
+    "url": "https://studiodimartino.eu",
+    "telephone": "+390574712060",
+    "priceRange": "€€",
+    "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Via Michelangelo Buonarroti, 15",
+        "addressLocality": "Agliana",
+        "addressRegion": "PT",
+        "postalCode": "51031",
+        "addressCountry": "IT"
+    },
+    "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": 43.9056,
+        "longitude": 11.0039
+    },
+    "openingHoursSpecification": [
+        {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Monday",
+                "Wednesday",
+                "Thursday"
+            ],
+            "opens": "09:00",
+            "closes": "19:00"
+        },
+        {
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": [
+                "Tuesday",
+                "Friday"
+            ],
+            "opens": "09:00",
+            "closes": "16:00"
+        }
+    ],
+    "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Servizi Odontoiatrici",
+        "itemListElement": [
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Implantologia e Protesi"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Ortodonzia Invisibile (Invisalign)"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Igiene e Sbiancamento Dentale"
+                }
+            },
+            {
+                "@type": "Offer",
+                "itemOffered": {
+                    "@type": "Service",
+                    "name": "Odontoiatria Pediatrica"
+                }
+            }
+        ]
+    }
+}
