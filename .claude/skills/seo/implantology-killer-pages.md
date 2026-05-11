@@ -130,7 +130,7 @@ different semantic entities to prioritize.
     - come raggiungere lo studio
 
 12. CTA FINALE
-    - proposta chiara (visita di valutazione gratuita o a prezzo fisso)
+    - proposta chiara (visita di valutazione senza impegno o a prezzo fisso)
     - numero telefono prominente
     - WhatsApp se disponibile
     - nessun linguaggio aggressivo
