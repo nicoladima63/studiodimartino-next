@@ -45,8 +45,17 @@ Each page must address at least 3 intent clusters.
 
 ## COPYWRITING ANTI-PATTERNS
 
-NEVER: "Lo studio è lieto di offrire...", "esperienza pluriennale", "siamo leader"
-ALWAYS: "Se hai perso un dente...", "Il costo varia principalmente in base a..."
+BANNED PHRASES — mai usare, nemmeno in forma simile:
+✗ "pluriennale esperienza" → sostituire con "X anni di attività" o numero concreto
+✗ "esperienza pluriennale" → idem
+✗ "lo studio è lieto di offrire" → scrivere dal punto di vista del paziente
+✗ "siamo leader nel settore" → specificare cosa differenzia concretamente
+✗ "i nostri pazienti sono la nostra priorità" → dimostrarlo con fatti, non affermarlo
+
+ALWAYS write from the patient's perspective:
+✓ "Se hai perso un dente..."
+✓ "Il Dott. Calvisi esegue impianti ad Agliana da X anni"
+✓ "Il costo varia principalmente in base a..."
 
 ==================================================
 

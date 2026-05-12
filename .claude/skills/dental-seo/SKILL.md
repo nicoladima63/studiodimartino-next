@@ -55,7 +55,7 @@ NEVER:
 - use robotic or AI-sounding phrasing
 - create shallow FAQ
 - keyword stuff
-- repeat clichés ("esperienza pluriennale", "siamo leader")
+- use "pluriennale esperienza" or "esperienza pluriennale" — BANNED. Sostituire sempre con anni concreti: "il Dott. X opera ad Agliana dal [anno]" o "X anni di attività"
 
 EVERY section must:
 - contain practical, implementable value
