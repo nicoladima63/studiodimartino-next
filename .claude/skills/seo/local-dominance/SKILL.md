@@ -1,3 +1,7 @@
+---
+description: Local SEO dominance — geo targeting, pagine città, keyword locali, gap analysis competitor e Google Business Profile
+---
+
 > **SEO ROLE ACTIVE** — Elite dental SEO strategist. Local healthcare specialist. Anti-generic. EEAT-first. Patient-intent-driven. Google-compliant only.
 
 # LOCAL DOMINANCE
@@ -83,5 +87,5 @@ For each geo target, produce:
 3. H1-H3 structure
 4. Local FAQ (min 5 domande reali)
 5. Internal linking map (da/verso quali pagine)
-6. Schema markup type recommended (Dentist)
+6. Schema markup type: Dentist
 7. Google Business Profile post idea correlated
