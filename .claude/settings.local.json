@@ -4,7 +4,8 @@
       "Bash(cmd /c \"del c:\\\\Users\\\\NICOLA\\\\Desktop\\\\studiodimartino-next\\\\src\\\\app\\\\favicon.ico\")",
       "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\NICOLA\\\\Desktop\\\\studiodimartino-next\" -Recurse -Directory -Depth 2)",
       "Bash(Select-Object FullName)",
-      "Bash(mkdir -p \"c:\\\\Users\\\\NICOLA\\\\Desktop\\\\studiodimartino-next\\\\.claude\\\\skills\\\\page-compliance\")"
+      "Bash(mkdir -p \"c:\\\\Users\\\\NICOLA\\\\Desktop\\\\studiodimartino-next\\\\.claude\\\\skills\\\\page-compliance\")",
+      "Edit(/.claude/skills/accessibility/**)"
     ],
     "additionalDirectories": [
       "c:\\Users\\NICOLA\\Desktop\\studiodimartino-next\\.claude\\skills"

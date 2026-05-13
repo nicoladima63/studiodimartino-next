@@ -17,7 +17,7 @@ export default function ScrollToTopButton() {
   return (
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-      className="fixed bottom-14 right-4 bg-[#2F4F4F] text-white p-3 rounded-full shadow-lg hover:bg-opacity-90 transition-opacity duration-300 z-40"
+      className="fixed bottom-14 right-4 bg-[#2F4F4F] text-white p-3 rounded-full shadow-lg hover:bg-opacity-90 transition-opacity duration-300 z-40 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#2F4F4F]"
       aria-label="Torna in cima"
     >
       <ArrowUp className="h-6 w-6" />

@@ -166,7 +166,7 @@ export default function HomePage() {
                 Dentista ad Agliana da oltre 30 anni
               </h3>
               <p className="text-gray-600 mb-4">
-                Mi chiamo Nicola Di Martino e sono un dentista ad Agliana, in provincia di Pistoia.
+                Mi chiamo Nicola Di Martino e faccio il dentista ad Agliana, in provincia di Pistoia.
                 Il mio obiettivo è far sì che ogni paziente possa sorridere con fiducia ogni giorno.
               </p>
               <h3 className="text-2xl font-semibold mt-8 mb-4 text-[#2F4F4F]">
@@ -204,7 +204,7 @@ export default function HomePage() {
                   href="https://wa.me/393464731192"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center bg-[#25D366] text-white px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition duration-200 w-72"
+                  className="inline-flex items-center justify-center bg-[#075E54] text-white px-6 py-3 rounded-lg font-semibold hover:bg-opacity-90 transition duration-200 w-72"
                 >
                   <WhatsAppIcon />
                   Scrivimi su WhatsApp
@@ -263,7 +263,7 @@ export default function HomePage() {
             </div>
           </div>
           <div className="text-center my-8">
-            <h2 className="text-2xl font-bold text-[#2F4F4F]">Inoltre</h2>
+            <p className="text-2xl font-bold text-[#2F4F4F]">Inoltre</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex flex-col items-center text-center p-6">
@@ -331,7 +331,7 @@ export default function HomePage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <Link key={index} href={service.href} className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow block group">
+              <Link key={index} href={service.href} aria-label={`Scopri di più su ${service.title}`} className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow block group">
                 <h3 className="text-xl font-semibold mb-3 text-[#2F4F4F] group-hover:underline">{service.title}</h3>
                 <p className="text-gray-600">{service.description}</p>
                 <span className="inline-flex items-center text-[#2F4F4F] font-semibold mt-3 text-sm">
