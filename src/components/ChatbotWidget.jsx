@@ -295,7 +295,8 @@ const ChatbotWidget = () => {
                   required
                 />
                 <span className="text-xs text-gray-500">
-                  Ho letto l&apos;<a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline">informativa privacy</a>
+                  Dichiaro di aver letto l&apos;<a href="/privacy" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline font-medium">Informativa sulla Privacy</a>{" "}
+                  e confermo l&apos;invio dei dati necessari per essere ricontattato.
                 </span>
               </label>
               <button

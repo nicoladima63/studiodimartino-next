@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(cmd /c \"del c:\\\\Users\\\\NICOLA\\\\Desktop\\\\studiodimartino-next\\\\src\\\\app\\\\favicon.ico\")"
+      "Bash(cmd /c \"del c:\\\\Users\\\\NICOLA\\\\Desktop\\\\studiodimartino-next\\\\src\\\\app\\\\favicon.ico\")",
+      "Bash(Get-ChildItem -Path \"c:\\\\Users\\\\NICOLA\\\\Desktop\\\\studiodimartino-next\" -Recurse -Directory -Depth 2)",
+      "Bash(Select-Object FullName)"
     ]
   }
 }
