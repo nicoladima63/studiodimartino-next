@@ -58,28 +58,28 @@ export default function ContactForm() {
       <Toaster position="top-center" />
       <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
         <div className="flex items-center">
-          <Phone className="text-[#2F4F4F] mr-4" />
+          <Phone className="text-[#2F4F4F] mr-4" aria-hidden="true" />
           <div>
             <h3 className="font-semibold">Telefono</h3>
             <p className="text-gray-600">+39 0574 712060</p>
           </div>
         </div>
         <div className="flex items-center">
-          <Mail className="text-[#2F4F4F] mr-4" />
+          <Mail className="text-[#2F4F4F] mr-4" aria-hidden="true" />
           <div>
             <h3 className="font-semibold">Email</h3>
             <p className="text-gray-600">segreteria@studiodimartino.eu</p>
           </div>
         </div>
         <div className="flex items-center">
-          <MapPin className="text-[#2F4F4F] mr-4" />
+          <MapPin className="text-[#2F4F4F] mr-4" aria-hidden="true" />
           <div>
             <h3 className="font-semibold">Indirizzo</h3>
             <p className="text-gray-600">Via Michelangelo Buonarroti, 15, 51031 - Agliana (PT)</p>
           </div>
         </div>
         <div className="flex items-center">
-          <Clock className="text-[#2F4F4F] mr-4" />
+          <Clock className="text-[#2F4F4F] mr-4" aria-hidden="true" />
           <div>
             <h3 className="font-semibold">Orari</h3>
             <p className="text-gray-600">Lun-Merc-Gio: 9-13, 15-19 | Mar-Ven: 9-16</p>
@@ -89,62 +89,85 @@ export default function ContactForm() {
 
       <form className="space-y-6" onSubmit={handleSubmit}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input
-            type="text"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            placeholder="Nome e Cognome"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2F4F4F]"
-            required
-          />
-          <input
-            type="tel"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            placeholder="Telefono"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2F4F4F]"
-            required
-          />
+          <div>
+            <label htmlFor="contact-name" className="sr-only">Nome e Cognome</label>
+            <input
+              id="contact-name"
+              type="text"
+              name="name"
+              value={formData.name}
+              onChange={handleChange}
+              placeholder="Nome e Cognome"
+              autoComplete="name"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2F4F4F]"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="contact-phone" className="sr-only">Telefono</label>
+            <input
+              id="contact-phone"
+              type="tel"
+              name="phone"
+              value={formData.phone}
+              onChange={handleChange}
+              placeholder="Telefono"
+              autoComplete="tel"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2F4F4F]"
+              required
+            />
+          </div>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <input
-            type="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            placeholder="email@example.com"
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2F4F4F]"
-            required
-          />
-          <select
-            name="visitType"
-            value={formData.visitType}
-            onChange={handleChange}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2F4F4F]"
-            required
-          >
-            <option value="">Seleziona il tipo di visita</option>
-            <option value="Prima Visita">Prima Visita</option>
-            <option value="Controllo">Controllo</option>
-            <option value="Urgenza">Urgenza</option>
-          </select>
+          <div>
+            <label htmlFor="contact-email" className="sr-only">Email</label>
+            <input
+              id="contact-email"
+              type="email"
+              name="email"
+              value={formData.email}
+              onChange={handleChange}
+              placeholder="email@example.com"
+              autoComplete="email"
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2F4F4F]"
+              required
+            />
+          </div>
+          <div>
+            <label htmlFor="contact-visittype" className="sr-only">Tipo di visita</label>
+            <select
+              id="contact-visittype"
+              name="visitType"
+              value={formData.visitType}
+              onChange={handleChange}
+              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2F4F4F]"
+              required
+            >
+              <option value="">Seleziona il tipo di visita</option>
+              <option value="Prima Visita">Prima Visita</option>
+              <option value="Controllo">Controllo</option>
+              <option value="Urgenza">Urgenza</option>
+            </select>
+          </div>
         </div>
-        <textarea
-          name="message"
-          value={formData.message}
-          onChange={handleChange}
-          placeholder="Messaggio (opzionale)"
-          rows="4"
-          className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2F4F4F]"
-        />
+        <div>
+          <label htmlFor="contact-message" className="sr-only">Messaggio (opzionale)</label>
+          <textarea
+            id="contact-message"
+            name="message"
+            value={formData.message}
+            onChange={handleChange}
+            placeholder="Messaggio (opzionale)"
+            rows="4"
+            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2F4F4F]"
+          />
+        </div>
         <label className="flex items-start gap-3 cursor-pointer">
           <input
             type="checkbox"
             checked={privacyAccepted}
             onChange={(e) => setPrivacyAccepted(e.target.checked)}
-            className="mt-1 h-4 w-4 accent-[#2F4F4F]"
+            className="mt-1 h-5 w-5 accent-[#2F4F4F]"
             required
           />
           <span className="text-sm text-gray-600">

@@ -1,0 +1,416 @@
+"use client";
+
+import { useState } from "react";
+import { Toaster, toast } from "react-hot-toast";
+import {
+  User,
+  CalendarDays,
+  MapPin,
+  Fingerprint,
+  VenetianMask,
+  Home,
+  Building2,
+  Mailbox,
+  Map,
+  Smartphone,
+  Mail,
+} from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import Hero from "@/components/Hero";
+
+const FormAnagrafica = () => {
+  const [formData, setFormData] = useState({
+    cognome: "",
+    nome: "",
+    dataNascita: "",
+    comuneNascita: "",
+    codiceFiscale: "",
+    sesso: "",
+    indirizzo: "",
+    citta: "",
+    cap: "",
+    provincia: "",
+    cellulare: "",
+    email: "",
+    privacyAccettata: false,
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const validateForm = () => {
+    const cfRegex = /^[A-Z0-9]{16}$/i;
+    if (!cfRegex.test(formData.codiceFiscale)) {
+      toast.error("Il codice fiscale non è valido.");
+      return false;
+    }
+    if (!formData.email.includes("@")) {
+      toast.error("Per favore, inserisci un'email valida.");
+      return false;
+    }
+    const capRegex = /^\d{5}$/;
+    if (!capRegex.test(formData.cap)) {
+      toast.error("Il CAP deve essere di 5 cifre.");
+      return false;
+    }
+    const provRegex = /^[A-Z]{2}$/i;
+    if (!provRegex.test(formData.provincia)) {
+      toast.error("La provincia deve essere di 2 lettere (es. PT).");
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    if (!formData.privacyAccettata) {
+      toast.error("Devi accettare l'informativa privacy prima di procedere.");
+      return;
+    }
+    if (!validateForm()) return;
+
+    const loadingToast = toast.loading("Invio in corso...");
+    try {
+      const res = await fetch("/api/anagrafica", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...formData, privacyAccepted: formData.privacyAccettata }),
+      });
+      const data = await res.json();
+      toast.dismiss(loadingToast);
+      if (res.ok && data.success) {
+        toast.success("Dati inviati con successo.", { duration: 4000 });
+        setFormData({
+          cognome: "",
+          nome: "",
+          dataNascita: "",
+          comuneNascita: "",
+          codiceFiscale: "",
+          sesso: "",
+          indirizzo: "",
+          citta: "",
+          cap: "",
+          provincia: "",
+          cellulare: "",
+          email: "",
+          privacyAccettata: false,
+        });
+      } else {
+        toast.error("Errore durante l'invio. Riprova più tardi.", { duration: 4000 });
+      }
+    } catch {
+      toast.dismiss(loadingToast);
+      toast.error("Errore durante l'invio. Riprova più tardi.", { duration: 4000 });
+    }
+  };
+
+  return (
+    <div>
+      <Toaster position="top-center" />
+      <Header />
+
+      <Hero
+        title="Anagrafica"
+        subtitle="Compila il modulo con i tuoi dati."
+        showButtons={false}
+      />
+
+      <section id="main-content" tabIndex={-1} className="py-16 w-full bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4">
+          <h2 className="text-3xl font-bold text-center mb-12 text-[#2F4F4F]">
+            Modulo Anagrafico
+          </h2>
+          <div className="max-w-4xl mx-auto bg-white p-8 rounded-lg shadow-lg">
+            <form onSubmit={handleSubmit} className="space-y-6">
+              <h3 className="text-xl font-semibold text-[#2F4F4F] mb-4">Anagrafica</h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="an-cognome" className="sr-only">Cognome</label>
+                  <div className="relative">
+                    <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <input
+                      id="an-cognome"
+                      type="text"
+                      name="cognome"
+                      value={formData.cognome}
+                      onChange={handleChange}
+                      placeholder="Cognome"
+                      required
+                      autoComplete="family-name"
+                      className="form-input pl-10"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="an-nome" className="sr-only">Nome</label>
+                  <div className="relative">
+                    <User className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <input
+                      id="an-nome"
+                      type="text"
+                      name="nome"
+                      value={formData.nome}
+                      onChange={handleChange}
+                      placeholder="Nome"
+                      required
+                      autoComplete="given-name"
+                      className="form-input pl-10"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="an-data-nascita" className="sr-only">Data di nascita</label>
+                  <div className="relative">
+                    <CalendarDays className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <input
+                      id="an-data-nascita"
+                      type="date"
+                      name="dataNascita"
+                      value={formData.dataNascita}
+                      onChange={handleChange}
+                      required
+                      autoComplete="bday"
+                      className="form-input pl-10"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="an-comune-nascita" className="sr-only">Comune di Nascita</label>
+                  <div className="relative">
+                    <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <input
+                      id="an-comune-nascita"
+                      type="text"
+                      name="comuneNascita"
+                      value={formData.comuneNascita}
+                      onChange={handleChange}
+                      placeholder="Comune di Nascita"
+                      required
+                      className="form-input pl-10"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="an-codice-fiscale" className="sr-only">Codice Fiscale</label>
+                  <div className="relative">
+                    <Fingerprint className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <input
+                      id="an-codice-fiscale"
+                      type="text"
+                      name="codiceFiscale"
+                      value={formData.codiceFiscale}
+                      onChange={handleChange}
+                      placeholder="Codice Fiscale"
+                      required
+                      className="form-input uppercase pl-10"
+                      maxLength="16"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="an-sesso" className="sr-only">Sesso</label>
+                  <div className="relative">
+                    <VenetianMask className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <select
+                      id="an-sesso"
+                      name="sesso"
+                      value={formData.sesso}
+                      onChange={handleChange}
+                      required
+                      className="form-input pl-10"
+                    >
+                      <option value="">Seleziona Sesso</option>
+                      <option value="M">Maschio</option>
+                      <option value="F">Femmina</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+
+              <hr className="my-6" />
+              <h3 className="text-xl font-semibold text-[#2F4F4F] mb-4">Residenza</h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="an-indirizzo" className="sr-only">Indirizzo (Via, Piazza, etc.)</label>
+                  <div className="relative">
+                    <Home className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <input
+                      id="an-indirizzo"
+                      type="text"
+                      name="indirizzo"
+                      value={formData.indirizzo}
+                      onChange={handleChange}
+                      placeholder="Indirizzo (Via, Piazza, etc.)"
+                      required
+                      autoComplete="street-address"
+                      className="form-input pl-10"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="an-cap" className="sr-only">CAP</label>
+                  <div className="relative">
+                    <Mailbox className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <input
+                      id="an-cap"
+                      type="text"
+                      name="cap"
+                      value={formData.cap}
+                      onChange={handleChange}
+                      placeholder="CAP"
+                      required
+                      autoComplete="postal-code"
+                      className="form-input pl-10"
+                      maxLength="5"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="an-citta" className="sr-only">Città</label>
+                  <div className="relative">
+                    <Building2 className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <input
+                      id="an-citta"
+                      type="text"
+                      name="citta"
+                      value={formData.citta}
+                      onChange={handleChange}
+                      placeholder="Città"
+                      required
+                      autoComplete="address-level2"
+                      className="form-input pl-10"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="an-provincia" className="sr-only">Provincia (es. PT)</label>
+                  <div className="relative">
+                    <Map className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <input
+                      id="an-provincia"
+                      type="text"
+                      name="provincia"
+                      value={formData.provincia}
+                      onChange={handleChange}
+                      placeholder="Provincia (es. PT)"
+                      required
+                      className="form-input uppercase pl-10"
+                      maxLength="2"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <hr className="my-6" />
+              <h3 className="text-xl font-semibold text-[#2F4F4F] mb-4">Contatti</h3>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="an-cellulare" className="sr-only">Cellulare</label>
+                  <div className="relative">
+                    <Smartphone className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <input
+                      id="an-cellulare"
+                      type="tel"
+                      name="cellulare"
+                      value={formData.cellulare}
+                      onChange={handleChange}
+                      placeholder="Cellulare"
+                      required
+                      autoComplete="tel"
+                      className="form-input pl-10"
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="an-email" className="sr-only">Email</label>
+                  <div className="relative">
+                    <Mail className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" aria-hidden="true" />
+                    <input
+                      id="an-email"
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="Email"
+                      required
+                      autoComplete="email"
+                      className="form-input pl-10"
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <hr className="my-6" />
+
+              <div className="space-y-2">
+                <h3 className="text-lg font-semibold text-[#2F4F4F]">Informativa Privacy (GDPR UE 2016/679)</h3>
+                <p className="text-sm text-gray-600 leading-relaxed">
+                  I dati personali raccolti saranno trattati nel rispetto del Regolamento (UE) 2016/679
+                  e utilizzati esclusivamente per finalità amministrative, cliniche e di contatto relative
+                  ai servizi richiesti. Il sito non conserva questi dati: li trasmette allo studio per
+                  l&apos;inserimento nel gestionale interno. Il titolare del trattamento è lo Studio Dr. Nicola Di Martino.{" "}
+                  <strong>Base giuridica:</strong> Art. 6 § 1 lett. b GDPR (esecuzione di misure precontrattuali
+                  su richiesta dell&apos;interessato).{" "}
+                  <strong>Conservazione:</strong> i dati sono conservati per il tempo necessario alla gestione
+                  del rapporto clinico e per gli obblighi di legge applicabili.{" "}
+                  Potrai in ogni momento richiedere l&apos;accesso, la rettifica o la cancellazione dei tuoi
+                  dati scrivendo alla{" "}
+                  <a className="text-[#2F4F4F] underline" href="mailto:segreteria@studiodimartino.eu">
+                    segreteria
+                  </a>.{" "}
+                  Hai inoltre il diritto di proporre reclamo al{" "}
+                  <a className="text-[#2F4F4F] underline" href="https://www.garanteprivacy.it" target="_blank" rel="noopener noreferrer">
+                    Garante per la Protezione dei Dati Personali
+                  </a>.{" "}
+                  Consulta l&apos;
+                  <a className="text-[#2F4F4F] underline" href="/privacy" target="_blank" rel="noopener noreferrer">
+                    informativa privacy completa
+                  </a>.
+                </p>
+                <label className="flex items-center gap-3 cursor-pointer mt-2">
+                  <input
+                    type="checkbox"
+                    name="privacyAccettata"
+                    checked={formData.privacyAccettata}
+                    onChange={(e) => setFormData({ ...formData, privacyAccettata: e.target.checked })}
+                    required
+                    className="h-5 w-5 accent-[#2F4F4F]"
+                  />
+                  <span className="text-sm text-gray-600">
+                    Dichiaro di aver letto l&apos;informativa privacy e confermo l&apos;invio dei dati
+                    necessari alla predisposizione dell&apos;anagrafica paziente.
+                  </span>
+                </label>
+              </div>
+
+              <button
+                type="submit"
+                className="w-full bg-[#2F4F4F] text-white py-3 rounded-lg font-semibold hover:bg-opacity-90 transition-colors duration-300 text-lg"
+              >
+                Invia Dati
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+      <Footer />
+    </div>
+  );
+};
+
+export default FormAnagrafica;

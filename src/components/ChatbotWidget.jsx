@@ -104,7 +104,11 @@ const ChatbotWidget = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [privacyAccepted, setPrivacyAccepted] = useState(false);
+  const [liveAnnouncement, setLiveAnnouncement] = useState("");
   const chatEndRef = useRef(null);
+  const floatingBtnRef = useRef(null);
+  const dialogRef = useRef(null);
+  const prevIsOpenRef = useRef(false);
 
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
@@ -113,7 +117,50 @@ const ChatbotWidget = () => {
   useEffect(() => {
     if (isOpen && chatHistory.length === 0) {
       setChatHistory([{ sender: "bot", text: CHAT_TREE.start.message }]);
+      setLiveAnnouncement(CHAT_TREE.start.message);
     }
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (isOpen && !prevIsOpenRef.current) {
+      const btn = dialogRef.current?.querySelector("button");
+      btn?.focus();
+    } else if (!isOpen && prevIsOpenRef.current && floatingBtnRef.current) {
+      floatingBtnRef.current.focus();
+    }
+    prevIsOpenRef.current = isOpen;
+  }, [isOpen]);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        setIsOpen(false);
+        return;
+      }
+      if (e.key !== "Tab") return;
+      const dialog = dialogRef.current;
+      if (!dialog) return;
+      const focusable = dialog.querySelectorAll(
+        'button:not([disabled]), [href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), [tabindex]:not([tabindex="-1"])'
+      );
+      if (!focusable.length) return;
+      const first = focusable[0];
+      const last = focusable[focusable.length - 1];
+      if (e.shiftKey) {
+        if (document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        }
+      } else {
+        if (document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, [isOpen]);
 
   const handleOptionClick = (option) => {
@@ -139,6 +186,7 @@ const ChatbotWidget = () => {
       setTimeout(() => {
         setChatHistory((prev) => [...prev, { sender: "bot", text: nextNode.message }]);
         setCurrentNode(option.next);
+        setLiveAnnouncement(nextNode.message);
       }, 400);
     }
   };
@@ -169,11 +217,13 @@ const ChatbotWidget = () => {
       const data = await res.json();
       if (!res.ok || !data.success) throw new Error("Errore invio chatbot");
 
+      const successMsg = "Grazie! Ti ricontatteremo al più presto. A presto!";
       setChatHistory((prev) => [
         ...prev,
         { sender: "user", text: `${formData.name} - ${formData.phone}` },
-        { sender: "bot", text: "Grazie! Ti ricontatteremo al più presto. A presto!" },
+        { sender: "bot", text: successMsg },
       ]);
+      setLiveAnnouncement(successMsg);
       setSubmitted(true);
       setFormData({ name: "", phone: "" });
     } catch (error) {
@@ -191,12 +241,18 @@ const ChatbotWidget = () => {
     setFormData({ name: "", phone: "" });
     setSubmitted(false);
     setPrivacyAccepted(false);
+    setLiveAnnouncement(CHAT_TREE.start.message);
   };
 
   return (
     <>
+      <div aria-live="polite" aria-atomic="true" className="sr-only">
+        {liveAnnouncement}
+      </div>
+
       {/* Bottone floating - basso sinistra */}
       <button
+        ref={floatingBtnRef}
         onClick={() => setIsOpen(!isOpen)}
         className={`fixed bottom-6 left-4 z-50 p-4 rounded-full shadow-lg transition-all duration-300 ${
           isOpen
@@ -204,16 +260,23 @@ const ChatbotWidget = () => {
             : "bg-[#2F4F4F] hover:bg-opacity-90 animate-bounce-slow"
         }`}
         aria-label={isOpen ? "Chiudi assistente" : "Apri assistente"}
+        aria-expanded={isOpen}
+        aria-controls="chat-dialog"
       >
         {isOpen ? (
-          <X className="h-6 w-6 text-white" />
+          <X className="h-6 w-6 text-white" aria-hidden="true" />
         ) : (
-          <MessageCircle className="h-6 w-6 text-white" />
+          <MessageCircle className="h-6 w-6 text-white" aria-hidden="true" />
         )}
       </button>
 
       {/* Overlay chat */}
       <div
+        id="chat-dialog"
+        role="dialog"
+        aria-label="Assistente Studio Di Martino"
+        aria-modal="true"
+        ref={dialogRef}
         className={`fixed z-50 bg-white rounded-2xl shadow-2xl border border-gray-200 overflow-hidden transition-all duration-300 origin-bottom-left
           md:bottom-24 md:left-4 md:w-[340px]
           bottom-0 left-0 right-0 w-full md:rounded-2xl rounded-t-2xl rounded-b-none
@@ -223,7 +286,7 @@ const ChatbotWidget = () => {
         <div className="bg-[#2F4F4F] text-white px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 bg-white bg-opacity-20 rounded-full flex items-center justify-center">
-              <MessageCircle className="h-4 w-4" />
+              <MessageCircle className="h-4 w-4" aria-hidden="true" />
             </div>
             <div>
               <p className="font-semibold text-sm">Studio Di Martino</p>
@@ -233,8 +296,9 @@ const ChatbotWidget = () => {
           <button
             onClick={() => setIsOpen(false)}
             className="hover:bg-white hover:bg-opacity-10 rounded p-1"
+            aria-label="Chiudi chat"
           >
-            <X className="h-4 w-4" />
+            <X className="h-4 w-4" aria-hidden="true" />
           </button>
         </div>
 
@@ -270,20 +334,26 @@ const ChatbotWidget = () => {
             </button>
           ) : CHAT_TREE[currentNode]?.type === "form" ? (
             <form onSubmit={handleFormSubmit} className="space-y-2">
+              <label htmlFor="chat-name" className="sr-only">Il tuo nome</label>
               <input
+                id="chat-name"
                 type="text"
                 placeholder="Il tuo nome"
                 value={formData.name}
                 onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                 className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2F4F4F]"
+                autoComplete="name"
                 required
               />
+              <label htmlFor="chat-phone" className="sr-only">Il tuo telefono</label>
               <input
+                id="chat-phone"
                 type="tel"
                 placeholder="Il tuo telefono"
                 value={formData.phone}
                 onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                 className="w-full px-3 py-2 text-sm border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-[#2F4F4F]"
+                autoComplete="tel"
                 required
               />
               <label className="flex items-start gap-2 cursor-pointer">
@@ -291,7 +361,7 @@ const ChatbotWidget = () => {
                   type="checkbox"
                   checked={privacyAccepted}
                   onChange={(e) => setPrivacyAccepted(e.target.checked)}
-                  className="mt-0.5 h-3.5 w-3.5 accent-[#2F4F4F]"
+                  className="mt-0.5 h-5 w-5 accent-[#2F4F4F]"
                   required
                 />
                 <span className="text-xs text-gray-500">
@@ -304,7 +374,7 @@ const ChatbotWidget = () => {
                 disabled={isSubmitting}
                 className="w-full bg-[#2F4F4F] text-white py-2 rounded-lg font-semibold text-sm hover:bg-opacity-90 transition-all duration-200 disabled:opacity-50 flex items-center justify-center gap-2"
               >
-                <Send className="h-4 w-4" />
+                <Send className="h-4 w-4" aria-hidden="true" />
                 {isSubmitting ? "Invio..." : "Invia richiesta"}
               </button>
             </form>
@@ -324,7 +394,7 @@ const ChatbotWidget = () => {
                   onClick={resetChat}
                   className="w-full text-center text-xs text-gray-400 hover:text-gray-600 mt-1 flex items-center justify-center gap-1"
                 >
-                  <ArrowLeft className="h-3 w-3" />
+                  <ArrowLeft className="h-3 w-3" aria-hidden="true" />
                   Ricomincia
                 </button>
               )}

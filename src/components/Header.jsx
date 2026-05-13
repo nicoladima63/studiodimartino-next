@@ -44,7 +44,12 @@ const Header = () => {
       );
     }
     return (
-      <Link key={label} href={href} className="hover:text-gray-300">
+      <Link
+        key={label}
+        href={href}
+        className="hover:text-gray-300"
+        aria-current={pathname === href ? "page" : undefined}
+      >
         {label}
       </Link>
     );
@@ -71,6 +76,7 @@ const Header = () => {
         href={href}
         className="block px-3 py-2 hover:bg-gray-700"
         onClick={() => setIsMenuOpen(false)}
+        aria-current={pathname === href ? "page" : undefined}
       >
         {label}
       </Link>
@@ -79,6 +85,12 @@ const Header = () => {
 
   return (
     <header className="bg-[#1d5353] text-white w-full sticky top-0 z-50 shadow-md">
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 focus:z-50 focus:px-4 focus:py-2 focus:bg-white focus:text-[#2F4F4F] focus:rounded"
+      >
+        Vai al contenuto principale
+      </a>
       <div className="max-w-7xl mx-auto px-4">
         <div className="flex justify-between items-center h-16">
           <div className="text-xl font-bold">
@@ -89,18 +101,20 @@ const Header = () => {
             className="md:hidden"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? "Chiudi menu" : "Apri menu"}
+            aria-expanded={isMenuOpen}
+            aria-controls="mobile-menu"
           >
-            {isMenuOpen ? <X /> : <Menu />}
+            {isMenuOpen ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
           </button>
 
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-8" aria-label="Navigazione principale">
             {navLinks.map(renderLink)}
           </nav>
         </div>
       </div>
 
       {isMenuOpen && (
-        <div className="md:hidden">
+        <div id="mobile-menu" className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1">
             {navLinks.map(renderMobileLink)}
           </div>

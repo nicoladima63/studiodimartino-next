@@ -22,7 +22,12 @@ const Popup = dynamic(
 
 export default function MapSection() {
   return (
-    <div className="mt-12 h-96 w-full rounded-lg overflow-hidden">
+    <div className="mt-12">
+      <p id="map-desc" className="sr-only">
+        Mappa di localizzazione dello Studio Dentistico Di Martino — Via Michelangelo Buonarroti 15, 51031 Agliana (PT).
+        L&apos;indirizzo completo è disponibile nella sezione contatti qui sopra.
+      </p>
+      <div className="h-96 w-full rounded-lg overflow-hidden" role="img" aria-describedby="map-desc">
       <MapContainer
         center={[43.9015278, 11.0136389]}
         zoom={15}
@@ -42,6 +47,7 @@ export default function MapSection() {
           </Popup>
         </Marker>
       </MapContainer>
+      </div>
     </div>
   );
 }

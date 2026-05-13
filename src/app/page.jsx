@@ -81,9 +81,43 @@ const teamMembers = [
   { name: "Dott. Giacomo D'Orlandi", role: "Ortodontista", photo: dorlandiImg.src },
 ];
 
+const localBusinessSchema = {
+  "@context": "https://schema.org",
+  "@type": "Dentist",
+  name: "Studio Dentistico Di Martino",
+  image: "https://www.studiodimartino.eu/og-image.jpg",
+  url: "https://www.studiodimartino.eu",
+  telephone: "+390574712060",
+  email: "segreteria@studiodimartino.eu",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "Via Michelangelo Buonarroti, 15",
+    addressLocality: "Agliana",
+    postalCode: "51031",
+    addressRegion: "PT",
+    addressCountry: "IT",
+  },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 43.9015278,
+    longitude: 11.0136389,
+  },
+  openingHoursSpecification: [
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Wednesday", "Thursday"], opens: "09:00", closes: "13:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Monday", "Wednesday", "Thursday"], opens: "15:00", closes: "19:00" },
+    { "@type": "OpeningHoursSpecification", dayOfWeek: ["Tuesday", "Friday"], opens: "09:00", closes: "16:00" },
+  ],
+  priceRange: "€€",
+  areaServed: ["Agliana", "Pistoia", "Prato", "Montemurlo", "Quarrata"],
+};
+
 export default function HomePage() {
   return (
     <div>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
+      />
       <Header />
 
       <Hero
@@ -101,11 +135,11 @@ export default function HomePage() {
         }
       />
 
-      <section className="py-10 bg-white">
+      <section id="main-content" tabIndex={-1} className="py-10 bg-white">
         <div className="max-w-5xl mx-auto px-4">
-          <h1 className="text-4xl font-bold text-[#2F4F4F] mb-6">
+          <h2 className="text-4xl font-bold text-[#2F4F4F] mb-6">
             Dentista ad Agliana vicino Prato, Montemurlo e Quarrata
-          </h1>
+          </h2>
 
           <p className="text-gray-600 text-lg">
             Lo Studio Dentistico Di Martino si occupa di implantologia,
@@ -453,7 +487,7 @@ export default function HomePage() {
 
       <a
         href="tel:+390574712060"
-        className="fixed bottom-28 right-4 bg-[#2F4F4F] text-white p-4 rounded-full shadow-lg hover:bg-opacity-90 z-40 md:hidden"
+        className="fixed bottom-28 right-4 bg-[#2F4F4F] text-white p-4 rounded-full shadow-lg hover:bg-opacity-90 z-40 md:hidden focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#2F4F4F]"
         aria-label="Chiama ora"
       >
         <Phone className="h-6 w-6" />
