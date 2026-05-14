@@ -88,15 +88,17 @@ Verifica per questa pagina:
 - [ ] Checkbox consenso: target size ≥ 24px (`h-5 w-5` minimo in Tailwind)
 - [ ] Errori form: `role="alert"`, identificano il campo, suggeriscono correzione
 
-### Step 4 — Audit SEO
+### Step 4 — Audit SEO & Performance
 
 Verifica per questa pagina:
 - [ ] `export const metadata` con `title`, `description`, `keywords` via `createMetadata()`
 - [ ] Un solo `<h1>` con keyword locale (es. "Agliana", "Pistoia", nome trattamento)
 - [ ] Struttura heading coerente con l'argomento della pagina
 - [ ] Immagini con `alt` keyword-rilevante (non generico)
+- [ ] Immagini above-the-fold (hero, banner) hanno `fetchPriority="high"` per ottimizzare LCP
 - [ ] Link interni verso pagine correlate (es. da implantologia → contatti)
 - [ ] Schema markup JSON-LD se la pagina è un servizio o ha FAQ
+- [ ] Core Web Vitals: LCP < 2.5s, CLS < 0.1, FID < 100ms (testare con Lighthouse)
 
 ### Step 5 — Report incrociato
 
@@ -149,10 +151,12 @@ Prima di considerare una pagina completa, spunta tutto:
 - [ ] Se c'è un form: checkbox + link privacy + validazione server
 
 **Accessibilità**
-- [ ] `<main id="main-content">` presente per lo skip link
+- [ ] Root della pagina è `<main>`, non `<div>`
+- [ ] `<section id="main-content" tabIndex={-1}>` presente per lo skip link (all'interno di `<main>`)
 - [ ] Tutti gli input hanno label
 - [ ] Un solo `<h1>` per pagina
 - [ ] Nessun `outline-none` senza `focus:ring` alternativo
+- [ ] Mappa Leaflet: marker icons correttamente configurati (L.Icon.Default.mergeOptions)
 
 **SEO**
 - [ ] `createMetadata()` con title, description, path, keywords

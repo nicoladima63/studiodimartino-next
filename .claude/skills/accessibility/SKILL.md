@@ -32,7 +32,7 @@ I file principali del sito dove si concentrano i problemi di accessibilità:
 | Chatbot | `src/components/ChatbotWidget.jsx` | ✓ conforme | — |
 | Footer | `src/components/Footer.jsx` | ✓ conforme | — |
 | Header / Nav | `src/components/Header.jsx` | ✓ conforme | — |
-| Mappa | `src/components/MapSection.jsx` | ✓ conforme | Leaflet marker non keyboard-navigable (known limitation) |
+| Mappa | `src/components/MapSection.jsx` | ✓ conforme | — |
 | Form anagrafica | `src/app/form-anagrafica/FormAnagraficaClient.jsx` | ✓ conforme | — |
 | Homepage | `src/app/page.jsx` | ✓ conforme | Elfsight widget (terza parte) |
 | ScrollToTopButton | `src/components/ScrollToTopButton.jsx` | ✓ conforme | — |
@@ -67,6 +67,40 @@ Colori verificati e conformi per questo progetto:
 **Tailwind pattern corretto per sr-only**:
 ```jsx
 <span className="sr-only">Testo solo per screen reader</span>
+```
+
+### 1b. PAGE STRUCTURE — LANDMARK
+
+La struttura della pagina deve usare landmark semantici per aiutare la navigazione screen reader.
+
+**Struttura root obbligatoria:**
+```jsx
+export default function HomePage() {
+  return (
+    <main>
+      {/* Tutto il contenuto della pagina va QUI dentro <main> */}
+      <Header />
+      <Hero ... />
+      <section>...</section>
+      <section>...</section>
+      <Footer />
+    </main>
+  );
+}
+```
+
+- `<main>` è il landmark di contenuto principale — deve wrappare TUTTO il contenuto della pagina (eccetto header/footer storici se sono globali)
+- `<section id="main-content" tabIndex={-1}>` è un target per il skip link, non un landmark principale
+- Non usare `<div>` come root della pagina — Next.js non lo richiede e rompe la semantica
+
+**Immagini ottimizzate per LCP:**
+Immagini "above the fold" (hero, banner) devono avere `fetchPriority="high"` per segnalare al browser di caricarle subito:
+```jsx
+<img 
+  src={heroImage} 
+  alt="..." 
+  fetchPriority="high"  // ← aggiungere questo
+/>
 ```
 
 ### 2. OPERABLE
@@ -159,18 +193,32 @@ La struttura degli heading impatta sia la navigazione degli screen reader che il
 - Separatori visivi tra due griglie/sezioni (es. "Inoltre") → usare `<p className="text-2xl font-bold ...">`, non `<h2>`
 - `<h2>` solo per sezioni di primo livello con contenuto reale, non per etichette decorative
 
-**Link text — regola anti-generico:**
-Link con testo visivo generico ("Scopri di più", "Leggi", "Qui") **devono** avere `aria-label` contestuale:
+**Link text — regola anti-generico (WCAG 2.5.3):**
+Link con testo visivo generico ("Scopri di più", "Leggi", "Qui") devono avere contesto visibile che li renda univoci.
+**NON usare `aria-label`** se il link contiene già testo visibile che identifichi univocamente il destinazione (es. nome servizio, titolo).
+
 ```jsx
-// SBAGLIATO — 4 link tutti con testo "Scopri di più"
-<Link href={service.href}>
+// SBAGLIATO — aria-label che ripete informazione già presente visivamente
+<Link href={service.href} aria-label={`Scopri di più su ${service.title}`}>
+  <h3>{service.title}</h3>
+  <p>{service.description}</p>
   <span>Scopri di più</span>
 </Link>
 
-// CORRETTO
-<Link href={service.href} aria-label={`Scopri di più su ${service.title}`}>
-  <span aria-hidden="true">Scopri di più</span>
+// CORRETTO — il link contiene già il service.title visibile
+// L'accessible name lo include automaticamente
+<Link href={service.href}>
+  <h3>{service.title}</h3>
+  <p>{service.description}</p>
+  <span>Scopri di più</span>
 </Link>
+```
+
+**Quando usare `aria-label`**: Solo se il link contiene SOLO testo generico senza contesto identificativo:
+```jsx
+// aria-label necessario qui
+<button aria-label="Chiudi dialogo">✕</button>
+<a href="/details" aria-label="Dettagli prodotto ABC-123">Leggi</a>
 ```
 
 ### 4. ROBUST
@@ -193,6 +241,26 @@ Link con testo visivo generico ("Scopri di più", "Leggi", "Qui") **devono** ave
 - `ComponenteClient.jsx` → client component con `"use client"` e tutto lo state
 Questo perché Next.js non permette `export const metadata` in componenti con `"use client"`.
 
+**Leaflet marker icons — configurazione Next.js:**
+Leaflet cerca i marker icon (marker-icon.png, marker-icon-2x.png, marker-shadow.png) in un percorso hardcoded che non esiste in Next.js.
+Soluzione: importare i file PNG da `node_modules/leaflet/dist/images/` e configurare L.Icon.Default:
+
+```jsx
+import L from "leaflet";
+import markerIcon from "leaflet/dist/images/marker-icon.png";
+import markerIcon2x from "leaflet/dist/images/marker-icon-2x.png";
+import markerShadow from "leaflet/dist/images/marker-shadow.png";
+
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconUrl: markerIcon.src,
+  iconRetinaUrl: markerIcon2x.src,
+  shadowUrl: markerShadow.src,
+});
+```
+
+Questo evita gli errori 404 nei DevTools e assicura che i marker appaiano correttamente.
+
 ==================================================
 
 ## WORKFLOW
@@ -205,9 +273,10 @@ Poi intervieni direttamente sui file, con diff minimi.
 
 ==================================================
 
-## CHECKLIST NUOVA PAGINA (WCAG 2.1 AA)
+## CHECKLIST NUOVA PAGINA (WCAG 2.2 AA)
 
 **Struttura**
+- [ ] Root della pagina è `<main>`, non `<div>`
 - [ ] Un solo `<h1>` per pagina (Hero lo genera — non aggiungerne un secondo)
 - [ ] `<section id="main-content" tabIndex={-1}>` per lo skip link
 - [ ] Heading logici: H2 per sezioni reali, non per separatori visivi
@@ -231,7 +300,9 @@ Poi intervieni direttamente sui file, con diff minimi.
 - [ ] Icone decorative → `aria-hidden="true"`
 - [ ] Bottoni icon-only → `aria-label` sul bottone
 - [ ] Immagini informative → `alt` descrittivo
+- [ ] Immagini above-the-fold (hero, banner) → `fetchPriority="high"`
 - [ ] Mappa Leaflet → `<p id="map-desc" className="sr-only">` + `role="img" aria-describedby="map-desc"`
+- [ ] Mappa Leaflet → configurare marker icons per evitare 404
 
 **Colori**
 - [ ] Contrasto testo ≥ 4.5:1 (non usare `#25D366` con testo bianco — usare `#075E54`)
@@ -247,17 +318,19 @@ Poi intervieni direttamente sui file, con diff minimi.
 
 ## ANTI-PATTERN DA EVITARE
 
+- Root della pagina è `<div>` invece di `<main>` (rompe semantica e landmark navigation)
 - `<div onClick>` senza `role="button"` e `tabIndex={0}`
 - `placeholder` come unica label (scompare durante la digitazione, non è annunciato correttamente)
 - `outline-none` senza `focus:ring` alternativo
 - Errori comunicati solo con colore (aggiungere sempre testo o icona)
 - Dialog / modal senza focus trap e senza handler `Escape`
-- `aria-label` ridondante che ripete il testo visibile già leggibile
+- `aria-label` su link che contengono già testo visibile descrittivo (WCAG 2.5.3 — accessible name ripete visibile)
 - `<h2>` o `<h3>` usati come separatori visivi decorativi (usare `<p>` con classi bold)
 - Due `<h1>` nella stessa pagina (Hero genera già il primo)
 - `bg-[#25D366]` con `text-white` — contrasto insufficiente (1.98:1)
 - Floating button (fixed, rounded-full) senza `focus:ring-white focus:ring-offset-*`
-- Link "Scopri di più" × N senza `aria-label` specifico per ciascuno
+- Immagini above-the-fold senza `fetchPriority="high"` (impatta LCP)
+- Mappa Leaflet senza configurazione L.Icon.Default (404 su marker images)
 - Pagina `"use client"` con `export const metadata` (Next.js non lo supporta — usare server wrapper)
 
 ==================================================

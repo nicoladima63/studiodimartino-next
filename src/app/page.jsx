@@ -113,7 +113,7 @@ const localBusinessSchema = {
 
 export default function HomePage() {
   return (
-    <div>
+    <main>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessSchema) }}
@@ -331,7 +331,7 @@ export default function HomePage() {
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             {services.map((service, index) => (
-              <Link key={index} href={service.href} aria-label={`Scopri di più su ${service.title}`} className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow block group">
+              <Link key={index} href={service.href} className="p-6 bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow block group">
                 <h3 className="text-xl font-semibold mb-3 text-[#2F4F4F] group-hover:underline">{service.title}</h3>
                 <p className="text-gray-600">{service.description}</p>
                 <span className="inline-flex items-center text-[#2F4F4F] font-semibold mt-3 text-sm">
@@ -496,6 +496,6 @@ export default function HomePage() {
       <ScrollToTopButton />
 
       <ChatbotWidget />
-    </div>
+    </main>
   );
 }

@@ -52,17 +52,15 @@ const Hero = ({ title, subtitle, showButtons = true }) => {
     <section id="home" className="relative bg-[#2F4F4F] text-white py-20 w-full overflow-hidden">
       <div className="absolute inset-0 w-full h-full">
         {heroImages.map((image, index) => (
-          <div
+          <img
             key={index}
-            className={`absolute inset-0 w-full h-full transition-opacity duration-1000 ease-in-out ${
+            src={image.src}
+            alt=""
+            aria-hidden="true"
+            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
               index === currentSlide ? "opacity-70" : "opacity-0"
             }`}
-            style={{
-              backgroundImage: `url(${image.src})`,
-              backgroundSize: "cover",
-              backgroundPosition: "center",
-              zIndex: 0,
-            }}
+            fetchPriority={index === currentSlide ? "high" : "low"}
           />
         ))}
         <div className="absolute inset-0 bg-black opacity-10 z-10"></div>
