@@ -1,14 +1,16 @@
 import { Phone, ChevronRight, Clock, Calendar, Shield, CheckCircle, Smile, Award, HandHelping } from "lucide-react";
 import Link from "next/link";
+import dynamic from "next/dynamic";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import Hero from "@/components/Hero";
-import ChatbotWidget from "@/components/ChatbotWidget";
 import ContactForm from "@/components/ContactForm";
 import MapSection from "@/components/MapSection";
-import ScrollToTopButton from "@/components/ScrollToTopButton";
 import ReviewsSection from "@/components/ReviewsSection";
 import { createMetadata } from "@/lib/seo";
+
+const ChatbotWidget = dynamic(() => import("@/components/ChatbotWidget"), { ssr: false });
+const ScrollToTopButton = dynamic(() => import("@/components/ScrollToTopButton"), { ssr: false });
 
 export const metadata = createMetadata({
   title: "Dentista ad Agliana da oltre 30 anni",

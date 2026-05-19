@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { ChevronLeft, ChevronRight, Calendar, Phone } from "lucide-react";
 import studioImg from "@/assets/photos/studio.jpg";
 
@@ -52,15 +53,18 @@ const Hero = ({ title, subtitle, showButtons = true }) => {
     <section id="home" className="relative bg-[#2F4F4F] text-white py-20 w-full overflow-hidden">
       <div className="absolute inset-0 w-full h-full">
         {heroImages.map((image, index) => (
-          <img
+          <Image
             key={index}
-            src={image.src}
+            src={image}
             alt=""
             aria-hidden="true"
-            className={`absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${
+            fill
+            className={`object-cover transition-opacity duration-1000 ease-in-out ${
               index === currentSlide ? "opacity-70" : "opacity-0"
             }`}
-            fetchPriority={index === currentSlide ? "high" : "low"}
+            priority={index === currentSlide}
+            quality={80}
+            sizes="100vw"
           />
         ))}
         <div className="absolute inset-0 bg-black opacity-10 z-10"></div>
