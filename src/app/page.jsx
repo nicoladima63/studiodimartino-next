@@ -7,6 +7,7 @@ import ChatbotWidget from "@/components/ChatbotWidget";
 import ContactForm from "@/components/ContactForm";
 import MapSection from "@/components/MapSection";
 import ScrollToTopButton from "@/components/ScrollToTopButton";
+import ReviewsSection from "@/components/ReviewsSection";
 import { createMetadata } from "@/lib/seo";
 
 export const metadata = createMetadata({
@@ -426,12 +427,7 @@ export default function HomePage() {
           <h2 className="text-3xl font-bold text-center mb-12 text-[#2F4F4F]">
             Cosa Dicono i Nostri Pazienti
           </h2>
-          <div className="flex justify-center">
-            <div
-              className="elfsight-app-7ecdbcef-baf9-49cf-a499-b2c134fdafa0"
-              data-elfsight-app-lazy
-            ></div>
-          </div>
+          <ReviewsSection maxReviews={5} sortBy="recent" />
           <div className="text-center mt-8">
             <a
               href="https://maps.app.goo.gl/9ssp3vWirHLUqKR2A"

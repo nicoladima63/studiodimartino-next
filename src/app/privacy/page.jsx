@@ -18,7 +18,7 @@ const PrivacyPolicy = () => {
           <h1 className="text-3xl md:text-4xl font-bold text-[#2F4F4F] mb-8">
             Informativa sulla Privacy
           </h1>
-          <p className="text-sm text-gray-500 mb-8">Ultimo aggiornamento: marzo 2026</p>
+          <p className="text-sm text-gray-500 mb-8">Ultimo aggiornamento: maggio 2026</p>
 
           <div className="prose prose-gray max-w-none space-y-8 text-gray-700 leading-relaxed">
 
@@ -55,6 +55,13 @@ const PrivacyPolicy = () => {
               <p>
                 Cookie tecnici necessari al funzionamento del sito. Per maggiori informazioni consultare
                 la <a href="https://www.iubenda.com/privacy-policy/43231094/cookie-policy" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline">Cookie Policy</a>.
+              </p>
+              <h3 className="text-lg font-semibold mt-4 mb-2">e) Dati delle Recensioni</h3>
+              <p>
+                Il sito visualizza le recensioni del studio pubblicate su Google Maps. I dati (nome autore,
+                foto profilo, testo della recensione, valutazione, data) provengono direttamente da Google Places API
+                e sono scaricati dal server del sito (non dal browser dell&apos;utente). Nessun dato personale del visitatore
+                è trasmesso a Google per la visualizzazione delle recensioni.
               </p>
             </div>
 
@@ -100,8 +107,9 @@ const PrivacyPolicy = () => {
                   email nel browser del visitatore.
                 </li>
                 <li>
-                  <strong>Elfsight</strong> - per la visualizzazione del widget delle recensioni Google. Potrebbe raccogliere dati anonimi di utilizzo
-                  (<a href="https://elfsight.com/privacy-policy/" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline">Privacy Policy Elfsight</a>).
+                  <strong>Google Places API</strong> - per la visualizzazione delle recensioni del studio da Google Maps.
+                  La API è chiamata dal server del sito (non dal browser), quindi i dati degli utenti visitatori non sono trasmessi a Google
+                  (<a href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline">Privacy Policy Google</a>).
                 </li>
                 <li>
                   <strong>OpenStreetMap</strong> - per la visualizzazione della mappa interattiva. Carica tile dai server di OpenStreetMap

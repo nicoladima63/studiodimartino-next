@@ -1,5 +1,4 @@
 import { Geist } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 /** @type {import('next').Metadata} */
@@ -167,18 +166,6 @@ export default function RootLayout({ children }) {
       </head>
       <body className="min-h-full flex flex-col">
         {children}
-        {/* Iubenda cookie */}
-        <Script
-          id="iubenda-cookie-configuration"
-          dangerouslySetInnerHTML={{
-            __html: `var _iub = _iub || []; _iub.csConfiguration = {"siteId":1758615,"cookiePolicyId":43231094,"lang":"it","storage":{"useSiteId":true}};`,
-          }}
-          strategy="beforeInteractive"
-        />
-        <Script src="https://cs.iubenda.com/autoblocking/1758615.js" strategy="afterInteractive" />
-        <Script src="//cdn.iubenda.com/cs/iubenda_cs.js" strategy="afterInteractive" />
-        {/* Elfsight recensioni */}
-        <Script src="https://static.elfsight.com/platform/platform.js" strategy="afterInteractive" />
       </body>
     </html>
   );
