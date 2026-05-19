@@ -12,7 +12,6 @@ const nextConfig = {
     formats: ['image/avif', 'image/webp'],
   },
   compress: true,
-  swcMinify: true,
   poweredByHeader: false,
   generateEtags: false,
 };

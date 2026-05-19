@@ -9,8 +9,8 @@ import MapSection from "@/components/MapSection";
 import ReviewsSection from "@/components/ReviewsSection";
 import { createMetadata } from "@/lib/seo";
 
-const ChatbotWidget = dynamic(() => import("@/components/ChatbotWidget"), { ssr: false });
-const ScrollToTopButton = dynamic(() => import("@/components/ScrollToTopButton"), { ssr: false });
+const ChatbotWidget = dynamic(() => import("@/components/ChatbotWidget"));
+const ScrollToTopButton = dynamic(() => import("@/components/ScrollToTopButton"));
 
 export const metadata = createMetadata({
   title: "Dentista ad Agliana da oltre 30 anni",
