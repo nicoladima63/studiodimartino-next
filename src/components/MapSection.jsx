@@ -32,6 +32,7 @@ export default function MapSection() {
         center={[43.9015278, 11.0136389]}
         zoom={15}
         style={{ height: "100%", width: "100%" }}
+        zoomControl={false}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

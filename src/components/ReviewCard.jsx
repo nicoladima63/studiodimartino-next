@@ -55,7 +55,12 @@ export default function ReviewCard({ review, url }) {
       </div>
 
       {/* Review text - scrollable */}
-      <p className="text-gray-700 leading-relaxed text-sm flex-1 overflow-y-auto mb-3">
+      <p
+        className="text-gray-700 leading-relaxed text-sm flex-1 overflow-y-auto mb-3"
+        tabIndex={0}
+        role="region"
+        aria-label="Testo della recensione"
+      >
         {review.text}
       </p>
 
