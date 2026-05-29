@@ -153,9 +153,9 @@ export default function ReviewsSection({
             <button
               key={index}
               onClick={() => handleDotClick(index)}
-              className={`h-2 rounded-full transition-all ${index === currentIndex
-                ? 'bg-blue-600 w-6'
-                : 'bg-gray-300 w-2 hover:bg-gray-400'
+              className={`h-6 rounded-full transition-all ${index === currentIndex
+                ? 'bg-blue-600 w-8'
+                : 'bg-gray-300 w-6 hover:bg-gray-400'
                 }`}
               aria-label={`Go to slide ${index + 1}`}
             />
