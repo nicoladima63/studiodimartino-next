@@ -142,7 +142,7 @@ export default function CookieBanner() {
                     type="checkbox"
                     checked={true}
                     disabled
-                    className="mt-1 h-5 w-5 accent-[#2F4F4F] cursor-not-allowed"
+                    className="mt-1 h-6 w-6 accent-[#2F4F4F] cursor-not-allowed"
                     aria-label="Cookie tecnici (sempre attivi)"
                   />
                 </div>
@@ -164,7 +164,7 @@ export default function CookieBanner() {
                     onChange={(e) =>
                       setPreferences({ ...preferences, analytics: e.target.checked })
                     }
-                    className="mt-1 h-5 w-5 accent-[#2F4F4F]"
+                    className="mt-1 h-6 w-6 accent-[#2F4F4F]"
                   />
                 </div>
 
@@ -185,7 +185,7 @@ export default function CookieBanner() {
                     onChange={(e) =>
                       setPreferences({ ...preferences, maps: e.target.checked })
                     }
-                    className="mt-1 h-5 w-5 accent-[#2F4F4F]"
+                    className="mt-1 h-6 w-6 accent-[#2F4F4F]"
                   />
                 </div>
               </div>

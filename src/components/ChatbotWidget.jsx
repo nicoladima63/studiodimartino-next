@@ -303,7 +303,12 @@ const ChatbotWidget = () => {
         </div>
 
         {/* Area messaggi */}
-        <div className="h-80 overflow-y-auto p-4 space-y-3 bg-gray-50">
+        <div
+          className="h-80 overflow-y-auto p-4 space-y-3 bg-gray-50"
+          role="region"
+          aria-label="Messaggi della chat"
+          tabIndex={0}
+        >
           {chatHistory.map((msg, index) => (
             <div
               key={index}
