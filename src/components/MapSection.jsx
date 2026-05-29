@@ -27,7 +27,7 @@ export default function MapSection() {
         Mappa di localizzazione dello Studio Dentistico Di Martino — Via Michelangelo Buonarroti 15, 51031 Agliana (PT).
         L&apos;indirizzo completo è disponibile nella sezione contatti qui sopra.
       </p>
-      <div className="h-96 w-full rounded-lg overflow-hidden" role="img" aria-describedby="map-desc">
+      <div className="h-96 w-full rounded-lg overflow-hidden" role="img" aria-label="Mappa interattiva dello studio" aria-describedby="map-desc">
       <MapContainer
         center={[43.9015278, 11.0136389]}
         zoom={15}
