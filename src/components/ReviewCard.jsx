@@ -58,8 +58,6 @@ export default function ReviewCard({ review, url }) {
       <p
         className="text-gray-700 leading-relaxed text-sm flex-1 overflow-y-auto mb-3"
         tabIndex={0}
-        role="region"
-        aria-label="Testo della recensione"
       >
         {review.text}
       </p>
