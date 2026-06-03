@@ -53,8 +53,9 @@ const PrivacyPolicy = () => {
               </p>
               <h3 className="text-lg font-semibold mt-4 mb-2">d) Dati di navigazione</h3>
               <p>
-                Cookie tecnici necessari al funzionamento del sito. Per maggiori informazioni consultare
-                la <a href="https://www.iubenda.com/privacy-policy/43231094/cookie-policy" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline">Cookie Policy</a>.
+                Cookie tecnici necessari al funzionamento del sito, cookie di analytics per comprendere
+                l&apos;esperienza dei visitatori, e cookie da servizi di mappe interattive. Per maggiori informazioni
+                consultare la <a href="/cookie-policy" className="text-[#2F4F4F] underline">Cookie Policy</a>.
               </p>
               <h3 className="text-lg font-semibold mt-4 mb-2">e) Dati delle Recensioni</h3>
               <p>
@@ -115,10 +116,6 @@ const PrivacyPolicy = () => {
                   <strong>OpenStreetMap</strong> - per la visualizzazione della mappa interattiva. Carica tile dai server di OpenStreetMap
                   (<a href="https://wiki.osmfoundation.org/wiki/Privacy_Policy" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline">Privacy Policy OSM</a>).
                 </li>
-                <li>
-                  <strong>Iubenda</strong> - per la gestione del consenso cookie e la cookie policy
-                  (<a href="https://www.iubenda.com/privacy-policy" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline">Privacy Policy Iubenda</a>).
-                </li>
               </ul>
             </div>
 
@@ -164,8 +161,7 @@ const PrivacyPolicy = () => {
               <h2 className="text-xl font-bold text-[#2F4F4F] mb-3">8. Cookie Policy</h2>
               <p>
                 Per informazioni dettagliate sull&apos;utilizzo dei cookie, si prega di consultare
-                la nostra <a href="https://www.iubenda.com/privacy-policy/43231094/cookie-policy" target="_blank" rel="noopener noreferrer" className="text-[#2F4F4F] underline">Cookie Policy</a> gestita
-                tramite Iubenda.
+                la nostra <a href="/cookie-policy" className="text-[#2F4F4F] underline">Cookie Policy</a>.
               </p>
             </div>
 

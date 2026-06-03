@@ -7,7 +7,7 @@ import { toast } from "react-hot-toast";
 const CHAT_TREE = {
   start: {
     id: "start",
-    message: "Ciao! Sono l'assistente dello Studio Di Martino. Come posso aiutarti?",
+    message: "Ciao! Sono un assistente automatico dello Studio Di Martino. Come posso aiutarti?",
     options: [
       { label: "Prima visita", next: "prima_visita" },
       { label: "Controllo periodico", next: "controllo" },
