@@ -59,7 +59,7 @@ const Footer = () => {
             </div>
             <nav aria-label="Link legali" className="mt-4 flex flex-col gap-1">
               <Link href="/privacy" className="text-sm hover:underline">Privacy Policy</Link>
-              <a href="https://www.iubenda.com/privacy-policy/43231094/cookie-policy" target="_blank" rel="noopener noreferrer" className="text-sm hover:underline">Cookie Policy</a>
+              <Link href="/cookie-policy" className="text-sm hover:underline">Cookie Policy</Link>
             </nav>
           </div>
         </div>
