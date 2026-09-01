@@ -65,7 +65,11 @@ export default function ReviewsSection({
   if (loading) {
     return (
       <div className="flex justify-center items-center py-8">
-        <CSpinner color="primary" />
+        <span
+          aria-label="Caricamento recensioni"
+          className="h-8 w-8 animate-spin rounded-full border-4 border-blue-600 border-t-transparent"
+          role="status"
+        />
       </div>
     );
   }
