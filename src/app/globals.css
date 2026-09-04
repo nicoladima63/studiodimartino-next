@@ -38,6 +38,11 @@ body {
   color: #374151;
 }
 
+/* Riserva spazio alle icone posizionate all'interno dei campi del modulo. */
+.form-input-with-icon {
+  padding-left: 2.5rem;
+}
+
 .form-input:focus {
   outline: none;
   border-color: #2F4F4F;

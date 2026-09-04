@@ -141,7 +141,7 @@ const FormAnagrafica = () => {
                       placeholder="Cognome"
                       required
                       autoComplete="family-name"
-                      className="form-input pl-10"
+                      className="form-input form-input-with-icon"
                     />
                   </div>
                 </div>
@@ -158,7 +158,7 @@ const FormAnagrafica = () => {
                       placeholder="Nome"
                       required
                       autoComplete="given-name"
-                      className="form-input pl-10"
+                      className="form-input form-input-with-icon"
                     />
                   </div>
                 </div>
@@ -177,7 +177,7 @@ const FormAnagrafica = () => {
                       onChange={handleChange}
                       required
                       autoComplete="bday"
-                      className="form-input pl-10"
+                      className="form-input form-input-with-icon"
                     />
                   </div>
                 </div>
@@ -193,7 +193,7 @@ const FormAnagrafica = () => {
                       onChange={handleChange}
                       placeholder="Comune di Nascita"
                       required
-                      className="form-input pl-10"
+                      className="form-input form-input-with-icon"
                     />
                   </div>
                 </div>
@@ -212,7 +212,7 @@ const FormAnagrafica = () => {
                       onChange={handleChange}
                       placeholder="Codice Fiscale"
                       required
-                      className="form-input uppercase pl-10"
+                      className="form-input form-input-with-icon uppercase"
                       maxLength="16"
                     />
                   </div>
@@ -227,7 +227,7 @@ const FormAnagrafica = () => {
                       value={formData.sesso}
                       onChange={handleChange}
                       required
-                      className="form-input pl-10"
+                      className="form-input form-input-with-icon"
                     >
                       <option value="">Seleziona Sesso</option>
                       <option value="M">Maschio</option>
@@ -254,7 +254,7 @@ const FormAnagrafica = () => {
                       placeholder="Indirizzo (Via, Piazza, etc.)"
                       required
                       autoComplete="street-address"
-                      className="form-input pl-10"
+                      className="form-input form-input-with-icon"
                     />
                   </div>
                 </div>
@@ -271,7 +271,7 @@ const FormAnagrafica = () => {
                       placeholder="CAP"
                       required
                       autoComplete="postal-code"
-                      className="form-input pl-10"
+                      className="form-input form-input-with-icon"
                       maxLength="5"
                     />
                   </div>
@@ -292,7 +292,7 @@ const FormAnagrafica = () => {
                       placeholder="Città"
                       required
                       autoComplete="address-level2"
-                      className="form-input pl-10"
+                      className="form-input form-input-with-icon"
                     />
                   </div>
                 </div>
@@ -308,7 +308,7 @@ const FormAnagrafica = () => {
                       onChange={handleChange}
                       placeholder="Provincia (es. PT)"
                       required
-                      className="form-input uppercase pl-10"
+                      className="form-input form-input-with-icon uppercase"
                       maxLength="2"
                     />
                   </div>
@@ -332,7 +332,7 @@ const FormAnagrafica = () => {
                       placeholder="Cellulare"
                       required
                       autoComplete="tel"
-                      className="form-input pl-10"
+                      className="form-input form-input-with-icon"
                     />
                   </div>
                 </div>
@@ -349,7 +349,7 @@ const FormAnagrafica = () => {
                       placeholder="Email"
                       required
                       autoComplete="email"
-                      className="form-input pl-10"
+                      className="form-input form-input-with-icon"
                     />
                   </div>
                 </div>

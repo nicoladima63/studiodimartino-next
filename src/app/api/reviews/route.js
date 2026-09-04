@@ -36,7 +36,17 @@ export async function GET(request) {
     const data = await response.json();
 
     if (data.status !== 'OK') {
-      throw new Error(`Google API error: ${data.status}`);
+      console.error('Google Places API error:', {
+        status: data.status,
+        errorMessage: data.error_message,
+      });
+      return NextResponse.json(
+        {
+          error: 'Google Maps non ha restituito le recensioni',
+          code: data.status || 'UNKNOWN_ERROR',
+        },
+        { status: 502 }
+      );
     }
 
     const result = data.result;
