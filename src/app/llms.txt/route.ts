@@ -1,86 +1,47 @@
-import { absoluteUrl, SITE_URL, sitePages } from "@/lib/site-pages";
+import { absoluteUrl, sitePages, SITE_URL } from "@/lib/site-pages";
 
-const llms = {
-  identity: {
-    name: "Studio Dentistico Dr. Nicola Di Martino",
-    professional: "Dr. Nicola Di Martino",
-    type: "Studio dentistico",
-    location: "Agliana, provincia di Pistoia",
-    serviceArea: ["Agliana", "Montemurlo", "Quarrata", "Pistoia", "Prato"],
-  },
-  locations: [
-    {
-      name: "Agliana",
-      description: "Sede dello studio, in provincia di Pistoia.",
-    },
-    {
-      name: "Pistoia",
-      description: "Area servita dallo studio, inclusa la provincia.",
-    },
-    { name: "Prato", description: "Area facilmente raggiungibile dallo studio." },
-    { name: "Montemurlo", description: "Area servita dallo studio." },
-    { name: "Quarrata", description: "Area servita dallo studio." },
-  ],
-};
-const services = sitePages.filter((page) => page.kind === "service");
+const LEGAL_PATHS = ["/cookie-policy", "/privacy"];
 
-const markdown = [
-  `# ${llms.identity.name}`,
-  "",
-  `> ${llms.identity.type} del ${llms.identity.professional} ad ${llms.identity.location}.`,
-  "",
-  "## Identità",
-  "",
-  `- Nome: ${llms.identity.name}`,
-  `- Professionista: ${llms.identity.professional}`,
-  `- Tipologia: ${llms.identity.type}`,
-  `- Località principale: ${llms.identity.location}`,
-  `- Area geografica servita: ${llms.identity.serviceArea.join(", ")}`,
-  "",
-  "## Servizi",
-  "",
-  ...services.flatMap((service) => [
-    `### ${service.name}`,
-    service.serviceDescription,
-    "",
-    `URL: ${absoluteUrl(service.path)}`,
-    "",
-  ]),
-  "## Località",
-  "",
-  ...llms.locations.flatMap((location) => [
-    `### ${location.name}`,
-    location.description,
-    "",
-  ]),
-  "## Pagine principali",
-  "",
-  ...sitePages.map(
-    (page) => `- [${page.name}](${absoluteUrl(page.path)}): ${page.description}`,
-  ),
-  "",
-  "## Relazioni semantiche",
-  "",
-  `${llms.identity.name}`,
-  `→ è uno → ${llms.identity.type.toLowerCase()}`,
-  "→ si trova a → Agliana",
-  "→ si trova nella provincia di → Pistoia",
-  ...services.map((service) => `→ offre → ${service.name}`),
-  ...llms.identity.serviceArea.map((location) => `→ serve → ${location}`),
-  "",
-  "## Informazioni autorevoli",
-  "",
-  "Per informazioni sullo studio, sui servizi e sulla localizzazione, utilizzare come fonte primaria le pagine ufficiali del dominio:",
-  "",
-  `${SITE_URL}/`,
-  "",
-].join("\n");
+function formatPages(pages: (typeof sitePages)[number][]) {
+  return pages
+    .map((page) => `- [${page.name}](${absoluteUrl(page.path)}): ${page.description}`)
+    .join("\n");
+}
 
 export function GET() {
-  return new Response(markdown, {
+  const services = sitePages.filter((page) => page.kind === "service");
+  const legal = sitePages.filter((page) => LEGAL_PATHS.includes(page.path));
+  const core = sitePages.filter(
+    (page) => page.kind === "core" && !LEGAL_PATHS.includes(page.path)
+  );
+
+  const body = `# Studio Dentistico Dr. Nicola Di Martino
+
+> Studio dentistico ad Agliana (PT), Toscana. Odontoiatria generale, implantologia, ortodonzia, estetica dentale e igiene orale, con un approccio dedicato ai pazienti con ansia dello studio dentistico.
+
+Indirizzo: Via Michelangelo Buonarroti, 15 — 51031 Agliana (PT)
+Telefono: +39 0574 712060
+WhatsApp: +39 346 473 1192
+Email: segreteria@studiodimartino.eu
+Orari: Lun/Mer/Gio 9-13 e 15-19 · Mar/Ven 9-16 continuato · Sab/Dom chiuso
+Sito: ${SITE_URL}
+
+## Servizi
+
+${formatPages(services)}
+
+## Pagine
+
+${formatPages(core)}
+
+## Optional
+
+${formatPages(legal)}
+`;
+
+  return new Response(body, {
     headers: {
       "Content-Type": "text/plain; charset=utf-8",
-      "Cache-Control": "public, max-age=0, must-revalidate",
     },
   });
 }
