@@ -112,7 +112,7 @@ const jsonLd = {
       "closes": "16:00"
     }
   ],
-  "medicalSpecialty": ["Dentistry", "Orthodontics", "Prosthodontics"],
+  "medicalSpecialty": "Dentistry",
   "availableService": [
     { "@type": "MedicalProcedure", "name": "Implantologia" },
     { "@type": "MedicalProcedure", "name": "Ortodonzia" },
