@@ -67,6 +67,7 @@ const Footer = () => {
         <div className="text-center pt-4 border-t border-gray-600">
           <p>Studio Dentistico Di Martino - La tua salute dentale è la nostra missione</p>
           <p className="mt-2">&copy; {new Date().getFullYear()} Studio Dentistico Di Martino. Tutti i diritti riservati.</p>
+          <p className="mt-2 text-sm text-gray-300">P.IVA 04354040489 - Iscrizione Albo Odontoiatri Ordine di Firenze n. 591</p>
         </div>
       </div>
     </footer>
