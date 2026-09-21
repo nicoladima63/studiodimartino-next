@@ -95,6 +95,33 @@ export const sitePages = [
     "serviceDescription": "Trattamenti ortodontici con allineatori trasparenti e apparecchi tradizionali per adulti, adolescenti e bambini."
   },
   {
+    "name": "Protesi fissa",
+    "path": "/protesi-fissa",
+    "description": "Informazioni su ponti e corone dentali fisse.",
+    "kind": "service",
+    "changeFrequency": "monthly",
+    "priority": 0.8,
+    "serviceDescription": "Ponti e corone fissi su denti naturali o su impianti, realizzati su misura per sostituire elementi dentali mancanti o compromessi."
+  },
+  {
+    "name": "Protesi mobile",
+    "path": "/protesi-mobile",
+    "description": "Informazioni su dentiere e protesi scheletrate removibili.",
+    "kind": "service",
+    "changeFrequency": "monthly",
+    "priority": 0.8,
+    "serviceDescription": "Protesi removibili totali e parziali (dentiere e scheletrati) per arcate con molti o tutti i denti mancanti."
+  },
+  {
+    "name": "Protesi su impianti",
+    "path": "/protesi-su-impianti",
+    "description": "Informazioni su protesi fisse e removibili ancorate a impianti dentali.",
+    "kind": "service",
+    "changeFrequency": "monthly",
+    "priority": 0.8,
+    "serviceDescription": "Riabilitazioni fisse (All-on-4) e removibili (overdenture) ancorate a impianti dentali per arcate parziali o complete."
+  },
+  {
     "name": "Cookie Policy",
     "path": "/cookie-policy",
     "description": "Informativa sui Cookie del sito Studio Dentistico Dr. Nicola Di Martino ad Agliana (PT).",

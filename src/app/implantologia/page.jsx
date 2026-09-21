@@ -215,11 +215,16 @@ export default function ImplantologiaPage() {
               Perché l&apos;impianto è diverso da un ponte o una protesi rimovibile
             </h3>
             <p className="text-gray-600">
-              Un <strong>ponte fisso</strong> richiede di limare i denti adiacenti sani.
-              Una <strong>protesi rimovibile</strong> non stimola l&apos;osso e può scivolare
-              durante la masticazione. L&apos;<strong>impianto dentale</strong> sostituisce il dente
-              dalla radice: è indipendente dai denti vicini, stimola l&apos;osso e si comporta
-              esattamente come un dente naturale.
+              Un <a href="/protesi-fissa" className="text-[#2F4F4F] underline"><strong>ponte fisso</strong></a> richiede
+              di limare i denti adiacenti sani.
+              Una <a href="/protesi-mobile" className="text-[#2F4F4F] underline"><strong>protesi rimovibile</strong></a> non
+              stimola l&apos;osso e può scivolare durante la masticazione. L&apos;
+              <strong>impianto dentale</strong> sostituisce il dente dalla radice: è indipendente
+              dai denti vicini, stimola l&apos;osso e si comporta esattamente come un dente
+              naturale. Quando gli impianti sostengono direttamente la protesi, si parla di{" "}
+              <a href="/protesi-su-impianti" className="text-[#2F4F4F] underline">
+                protesi su impianti
+              </a>.
             </p>
           </div>
 
@@ -509,6 +514,24 @@ export default function ImplantologiaPage() {
                   Odontoiatria generale
                 </a>{" "}
                 — cura dei denti residui prima e durante il trattamento implantare
+              </li>
+              <li>
+                <a href="/protesi-su-impianti" className="text-[#2F4F4F] underline">
+                  Protesi su impianti
+                </a>{" "}
+                — soluzioni fisse e removibili ancorate agli impianti
+              </li>
+              <li>
+                <a href="/protesi-fissa" className="text-[#2F4F4F] underline">
+                  Protesi fissa
+                </a>{" "}
+                — ponti e corone su denti naturali
+              </li>
+              <li>
+                <a href="/protesi-mobile" className="text-[#2F4F4F] underline">
+                  Protesi mobile
+                </a>{" "}
+                — dentiere e protesi scheletrate removibili
               </li>
             </ul>
           </div>

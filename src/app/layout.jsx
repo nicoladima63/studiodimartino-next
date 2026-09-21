@@ -113,32 +113,56 @@ const jsonLd = {
     }
   ],
   "medicalSpecialty": "Dentistry",
-  "availableService": [
-    { "@type": "MedicalProcedure", "name": "Implantologia" },
-    { "@type": "MedicalProcedure", "name": "Ortodonzia" },
-    { "@type": "MedicalProcedure", "name": "Estetica Dentale" },
-    { "@type": "MedicalProcedure", "name": "Igiene e Prevenzione" },
-    { "@type": "MedicalProcedure", "name": "Odontoiatria Conservativa" }
-  ],
   "hasOfferCatalog": {
     "@type": "OfferCatalog",
     "name": "Servizi Odontoiatrici",
     "itemListElement": [
       {
         "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Implantologia e Protesi" }
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Implantologia",
+          "url": "https://www.studiodimartino.eu/implantologia"
+        }
       },
       {
         "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Ortodonzia Invisibile (Invisalign)" }
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Protesi Fissa e Mobile"
+        }
       },
       {
         "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Igiene e Sbiancamento Dentale" }
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Ortodonzia",
+          "url": "https://www.studiodimartino.eu/ortodonzia"
+        }
       },
       {
         "@type": "Offer",
-        "itemOffered": { "@type": "Service", "name": "Odontoiatria Pediatrica" }
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Estetica Dentale",
+          "url": "https://www.studiodimartino.eu/estetica-dentale"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Igiene e Prevenzione",
+          "url": "https://www.studiodimartino.eu/igiene-prevenzione"
+        }
+      },
+      {
+        "@type": "Offer",
+        "itemOffered": {
+          "@type": "Service",
+          "name": "Odontoiatria Generale",
+          "url": "https://www.studiodimartino.eu/odontoiatria-generale"
+        }
       }
     ]
   },
